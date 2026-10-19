@@ -120,6 +120,11 @@ export default function Navbar() {
             </li>
           </ul>
 
+
+
+
+          
+
           {/* Mobile right: cart + hamburger */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }} className="mobile-controls">
             <Link href="/cart" aria-label="Cart"
