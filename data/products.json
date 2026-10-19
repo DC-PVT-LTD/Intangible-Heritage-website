@@ -1,0 +1,56 @@
+[
+  {
+    "id": "1",
+    "name": "Handcrafted Antique Brass Thel Thulāva (තෙල් තුලාව)",
+    "description": "Authentic artisan-cast solid brass Thel Thulāva oil pourer with classical Sri Lankan floral engravings and mythical dragon-spout. Designed for ceremonial oil pouring, Shirodhara therapy, and heritage collectors. Includes certificate of craftsmanship.",
+    "price": 14500,
+    "image": "/images/thel-thulava.jpg",
+    "category": "Implements",
+    "inStock": true
+  },
+  {
+    "id": "2",
+    "name": "Artisanal Medicated Herbal Oil Collection (Hela Thailaya)",
+    "description": "A set of three classical Sri Lankan medicated oils (Pinda Thailaya, Nilyadi Thailaya, and Maha Narayana Thailaya) prepared following ancient palm-leaf recipes with organic Ritigala herbs and sesame oil base. 100ml amber bottles.",
+    "price": 6800,
+    "image": "/images/herbal-oils.jpg",
+    "category": "Medicinal Oils",
+    "inStock": true
+  },
+  {
+    "id": "3",
+    "name": "Hand-Carved Stone & Wood Apothecary Mortar & Pestle",
+    "description": "Traditional Sri Lankan stone mortar (Wangediya) and heavy jackwood pestle crafted by traditional blacksmiths and stone carvers. Essential for grinding herbal powders, roots, and kalka pastes without losing vital medicinal potency.",
+    "price": 8500,
+    "image": "/images/hela-wedakama.jpg",
+    "category": "Implements",
+    "inStock": true
+  },
+  {
+    "id": "4",
+    "name": "Sarartha Sangrahaya: Royal Medical Manuscript Replica",
+    "description": "Archival reproduction of King Buddhadasa's 4th Century CE medical treatise written on cured palmyra leaves with an authentic wooden binding and brass stylus replica (Panhinda). A rare cultural collector's centerpiece.",
+    "price": 19500,
+    "image": "/images/puskola-poth.jpg",
+    "category": "Publications",
+    "inStock": true
+  },
+  {
+    "id": "5",
+    "name": "Hela Herbal Wellness & Decoction Hamper",
+    "description": "Premium curation of traditional Sri Lankan healing herbs: sun-dried Belimal flowers, Ranawara blossoms, Venivel bark, certified Paspanguwa packets, and wild bee honey sourced from indigenous Vedda communities.",
+    "price": 4200,
+    "image": "/images/beheth-oruwa.jpg",
+    "category": "Herbal Teas",
+    "inStock": true
+  },
+  {
+    "id": "6",
+    "name": "Sanni Healing Mask Replica (Maha Kola)",
+    "description": "Exquisite hand-carved Kaduru wood mask depicting the traditional ritual healing deities of southern Sri Lanka. Coloured with mineral pigments according to 300-year-old hereditary painting traditions.",
+    "price": 12500,
+    "image": "/images/mask-carving.jpg",
+    "category": "Ritual Art",
+    "inStock": false
+  }
+]

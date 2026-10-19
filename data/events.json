@@ -1,0 +1,68 @@
+[
+  {
+    "id": "1",
+    "title": "Thel Sindima: Ancient Medicated Oil Formulation Masterclass",
+    "date": "2026-11-20",
+    "endDate": "2026-11-22",
+    "venue": "National Institute of Traditional Medicine, Nawinna, Maharagama",
+    "description": "A comprehensive practical masterclass demonstrating the ancient art of Thel Sindima (herbal oil brewing). Master physicians demonstrate decoction boiling, herbal paste (kalka) preparation, oil purification, and the sacred use of the Thel Thulāva dispenser.",
+    "image": "/images/herbal-oils.jpg",
+    "status": "upcoming",
+    "category": "Masterclass"
+  },
+  {
+    "id": "2",
+    "title": "Puskola Poth Workshop: Conserving Medical Ola Leaf Manuscripts",
+    "date": "2026-12-05",
+    "endDate": "2026-12-07",
+    "venue": "BMICH Committee Lounge, Colombo 07",
+    "description": "Hands-on workshop on palm-leaf preservation, text transliteration, and traditional ink formulation using dummala oil and charcoal. Led by chief conservators and indigenous manuscript scholars.",
+    "image": "/images/puskola-poth.jpg",
+    "status": "upcoming",
+    "category": "Workshop"
+  },
+  {
+    "id": "3",
+    "title": "Symposium on Ancient Hospital Architecture: Mihintale & Polonnaruwa",
+    "date": "2027-02-15",
+    "endDate": "2027-02-17",
+    "venue": "Faculty of Indigenous Medicine, University of Colombo, Rajagiriya",
+    "description": "International academic symposium presenting archaeological excavations of ancient Sri Lankan monastic hospitals, medicinal baths (Beheth Oru), and surgical instruments dating back to the Anuradhapura and Polonnaruwa eras.",
+    "image": "/images/beheth-oruwa.jpg",
+    "status": "upcoming",
+    "category": "Symposium"
+  },
+  {
+    "id": "4",
+    "title": "Ritigala Ethnobotanical Field Expedition & Medicinal Herb Survey",
+    "date": "2026-04-10",
+    "endDate": "2026-04-12",
+    "venue": "Ritigala Strict Natural Reserve, North Central Province",
+    "description": "Guided field research expedition documenting endangered medicinal flora used in traditional Hela Wedakama. Participants catalogued 85 rare species with traditional healers and botanical taxonomists.",
+    "image": "/images/hela-wedakama.jpg",
+    "status": "past",
+    "category": "Field Research"
+  },
+  {
+    "id": "5",
+    "title": "Exhibition: Sacred Healing Implements & Thel Thulāva Heritage",
+    "date": "2025-10-18",
+    "endDate": "2025-10-28",
+    "venue": "National Museum Colombo, Colombo 07",
+    "description": "Special public exhibition displaying 120 rare antique bronze and brass oil pourers (Thel Thulāva), medicine boxes (Beheth Pettagama), and surgical tools collected from aristocratic physician lineages.",
+    "image": "/images/thel-thulava.jpg",
+    "status": "past",
+    "category": "Exhibition"
+  },
+  {
+    "id": "6",
+    "title": "Sanni Yakuma Healing Ritual Documentation Launch",
+    "date": "2025-08-14",
+    "endDate": "2025-08-14",
+    "venue": "Kandy Cultural Centre, Kandy",
+    "description": "Premiere of the documentary archive exploring the traditional psychosocial healing rituals of Sri Lanka, examining the clinical symbiosis between herbal medicine, psychological drama, and spiritual therapy.",
+    "image": "/images/mask-carving.jpg",
+    "status": "past",
+    "category": "Archive Launch"
+  }
+]

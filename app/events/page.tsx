@@ -1,0 +1,149 @@
+/**
+ * app/events/page.tsx — Events Page
+ */
+import type { Metadata } from 'next';
+import Image from 'next/image';
+import { CalendarDays, MapPin, Tag } from 'lucide-react';
+import eventsData from '@/data/events.json';
+import type { Event } from '@/lib/types';
+import { formatDate } from '@/lib/utils';
+
+export const metadata: Metadata = {
+  title: 'Events & Exhibitions',
+  description: 'Upcoming and past cultural heritage exhibitions, workshops, and community events organised by Intangible Heritage Sri Lanka.',
+};
+
+function EventCard({ event }: { event: Event }) {
+  return (
+    <article className="heritage-card" style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+      <div style={{ position: 'relative', aspectRatio: '16/9', overflow: 'hidden', flexShrink: 0 }}>
+        <Image src={event.image} alt={event.title} fill
+          style={{ objectFit: 'cover', transition: 'transform 0.35s ease' }}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="event-img"
+        />
+        <div style={{
+          position: 'absolute', top: '0.75rem', left: '0.75rem', display: 'flex', gap: '0.4rem',
+        }}>
+          <span style={{
+            background: event.status === 'upcoming' ? 'var(--color-accent)' : 'rgba(0,0,0,0.5)',
+            color: event.status === 'upcoming' ? 'var(--color-primary)' : '#fff',
+            padding: '0.2rem 0.6rem', borderRadius: '999px', fontSize: '0.72rem', fontWeight: 700,
+          }}>
+            {event.status === 'upcoming' ? '● Upcoming' : 'Past'}
+          </span>
+          <span style={{
+            background: 'rgba(255,255,255,0.9)', color: 'var(--color-primary)',
+            padding: '0.2rem 0.6rem', borderRadius: '999px', fontSize: '0.72rem', fontWeight: 700,
+          }}>
+            {event.category}
+          </span>
+        </div>
+      </div>
+      <div style={{ padding: '1.25rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
+        <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.05rem', fontWeight: 700,
+          color: 'var(--color-primary)', marginBottom: '0.75rem', lineHeight: 1.35 }}>
+          {event.title}
+        </h3>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem',
+          marginBottom: '0.85rem', fontSize: '0.84rem', color: 'var(--color-secondary)' }}>
+          <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+            <CalendarDays size={14} style={{ color: 'var(--color-accent)', flexShrink: 0 }} />
+            {formatDate(event.date)}
+            {event.endDate && event.endDate !== event.date && ` – ${formatDate(event.endDate)}`}
+          </span>
+          <span style={{ display: 'flex', alignItems: 'flex-start', gap: '0.4rem' }}>
+            <MapPin size={14} style={{ color: 'var(--color-accent)', flexShrink: 0, marginTop: '2px' }} />
+            {event.venue}
+          </span>
+          <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+            <Tag size={14} style={{ color: 'var(--color-accent)', flexShrink: 0 }} />
+            {event.category}
+          </span>
+        </div>
+        <p style={{ fontSize: '0.88rem', color: 'var(--color-secondary)', lineHeight: 1.65, flex: 1 }}>
+          {event.description}
+        </p>
+      </div>
+    </article>
+  );
+}
+
+export default function EventsPage() {
+  const upcoming = (eventsData as Event[]).filter(e => e.status === 'upcoming');
+  const past     = (eventsData as Event[]).filter(e => e.status === 'past');
+
+  return (
+    <>
+      {/* Page header */}
+      <div style={{
+        background: 'linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%)',
+        paddingBlock: '4rem 3rem', textAlign: 'center', color: '#fff',
+      }}>
+        <div className="container-site">
+          <p style={{ color: 'var(--color-accent)', fontWeight: 600, fontSize: '0.85rem',
+            letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
+            Events & Exhibitions
+          </p>
+          <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(2rem, 5vw, 3rem)',
+            fontWeight: 800, marginBottom: '1rem', lineHeight: 1.15 }}>
+            Medical Heritage & Masterclasses
+          </h1>
+          <p style={{ color: 'rgba(255,255,255,0.85)', maxWidth: '600px', margin: '0 auto', lineHeight: 1.7 }}>
+            Discover our practical Thel Sindima oil-brewing masterclasses, ancient hospital symposia, palm-leaf manuscript preservation workshops, and ethnobotanical field surveys.
+          </p>
+        </div>
+      </div>
+
+      <div style={{ paddingBlock: '4rem' }}>
+        <div className="container-site">
+
+          {/* ── Upcoming ───────────────────────────────── */}
+          <section aria-label="Upcoming events" style={{ marginBottom: '4rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
+              <h2 className="section-title" style={{ margin: 0 }}>Upcoming Events</h2>
+              <span style={{
+                background: 'var(--color-accent)', color: 'var(--color-primary)',
+                borderRadius: '999px', padding: '0.15rem 0.6rem', fontSize: '0.8rem', fontWeight: 700,
+              }}>
+                {upcoming.length}
+              </span>
+            </div>
+            {upcoming.length === 0 ? (
+              <p style={{ color: 'var(--color-secondary)' }}>No upcoming events at this time. Check back soon!</p>
+            ) : (
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1.75rem' }}>
+                {upcoming.map(e => <EventCard key={e.id} event={e} />)}
+              </div>
+            )}
+          </section>
+
+          {/* Divider */}
+          <hr style={{ border: 'none', borderTop: '1px solid var(--color-brown-100)', marginBottom: '3.5rem' }} />
+
+          {/* ── Past ───────────────────────────────────── */}
+          <section aria-label="Past events">
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
+              <h2 className="section-title" style={{ margin: 0, color: 'var(--color-secondary)' }}>Past Events</h2>
+              <span style={{
+                background: 'var(--color-brown-100)', color: 'var(--color-secondary)',
+                borderRadius: '999px', padding: '0.15rem 0.6rem', fontSize: '0.8rem', fontWeight: 700,
+              }}>
+                {past.length}
+              </span>
+            </div>
+            {past.length === 0 ? (
+              <p style={{ color: 'var(--color-secondary)' }}>No past events recorded.</p>
+            ) : (
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1.75rem', opacity: 0.85 }}>
+                {past.map(e => <EventCard key={e.id} event={e} />)}
+              </div>
+            )}
+          </section>
+
+        </div>
+      </div>
+      <style>{`.event-img:hover { transform: scale(1.05); }`}</style>
+    </>
+  );
+}

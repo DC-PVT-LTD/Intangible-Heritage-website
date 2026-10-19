@@ -1,0 +1,72 @@
+[
+  {
+    "id": "1",
+    "slug": "thel-sindima-traditional-pharmacopeia",
+    "title": "The Art and Alchemy of Thel Sindima: Chemical and Ritual Principles in Ancient Sri Lankan Medicated Oils",
+    "author": "Prof. Ariyasena Wickramarachchi & Dr. Sumedha Jayakody",
+    "authorAffiliation": "Institute of Indigenous Medicine, University of Colombo",
+    "date": "2024-08-12",
+    "abstract": "The preparation of medicated oils (Thel Sindima) in traditional Sri Lankan Hela Wedakama constitutes one of the most sophisticated bio-extraction techniques of antiquity. This paper explores the thermal stages (Paka), lipid saponification parameters, and botanical infusion phases utilized in formulating classical oils such as Pinda and Maha Narayana Thailaya. The study documents the traditional use of the brass Thel Thulāva for ceremonial and therapeutic dispensing during continuous head-pour therapies (Shirodhara), proving the synergistic relationship between ritual implement design and clinical therapeutic delivery.",
+    "tags": ["Thel Sindima", "Thel Thulava", "Hela Wedakama", "Pharmacopeia", "Indigenous Medicine"],
+    "downloadUrl": "#",
+    "journal": "Ceylon Journal of Medical Science & Heritage",
+    "volume": "38",
+    "issue": "2"
+  },
+  {
+    "id": "2",
+    "slug": "thel-thulava-material-culture-healing",
+    "title": "Thel Thulāva (තෙල් තුලාව): Metallurgy, Ritual Geometry, and Dispensing Utility in Ancient Sri Lankan Medicine",
+    "author": "Dr. Manel Hettiarachchi",
+    "authorAffiliation": "Department of Archaeology, University of Peradeniya",
+    "date": "2024-03-20",
+    "abstract": "Archaeological analysis of antique Sri Lankan brass and bronze oil pourers (Thel Thulāva) demonstrates a unique integration of sacred metallurgy, artistic symbolism, and precise fluid dynamics. Originating in medieval royal pharmacies and monastic infirmaries, the vessel's elongated swan or dragon spout provided laminar oil flow essential for administering measured medicinal doses and temple ritual libations. This paper documents 42 museum specimens across Sri Lanka, tracing stylistic shifts from the Anuradhapura era to the Kandyan kingdom.",
+    "tags": ["Thel Thulava", "Metallurgy", "Medical Implements", "Archaeology", "Material Heritage"],
+    "downloadUrl": "#",
+    "journal": "Ancient Ceylon Historical & Cultural Studies",
+    "volume": "52",
+    "issue": "1"
+  },
+  {
+    "id": "3",
+    "slug": "buddhadasa-royal-hospitals-mihintale",
+    "title": "King Buddhadasa and the Golden Age of Sri Lankan Monastic Hospitals: Archaeological Findings at Mihintale & Polonnaruwa",
+    "author": "Prof. K. N. O. Dharmadasa & Dr. Lalith Senarath",
+    "authorAffiliation": "Postgraduate Institute of Archaeology (PGIAR)",
+    "date": "2023-11-15",
+    "abstract": "Sri Lanka possesses the world's oldest scientifically structured hospital ruins. Attributed to the vision of royal physician King Buddhadasa (4th Century CE) and subsequent monastic orders, sites at Mihintale and Alahana Parivena feature standardized treatment wards, hot-water baths, medicine storage cellars, and stone medicinal canoes (Beheth Oru). Through spatial analysis and residue testing of stone vats, this paper demonstrates how monastic medicine fused compassionate spiritual care with advanced empirical pharmacology.",
+    "tags": ["Beheth Oruwa", "Mihintale", "Buddhadasa", "Ancient Hospitals", "Medical History"],
+    "downloadUrl": "#",
+    "journal": "Journal of the Royal Asiatic Society of Sri Lanka",
+    "volume": "67",
+    "issue": "3"
+  },
+  {
+    "id": "4",
+    "slug": "puskola-poth-medical-manuscript-preservation",
+    "title": "Deciphering and Preserving Ola Leaf (Puskola) Medical Treatises: Safeguarding Sri Lanka's Secret Lineage Recipes",
+    "author": "Ven. Dr. Medhananda Thero & Asst. Prof. Nilanthi Rathnayake",
+    "authorAffiliation": "National Library & Documentation Services Board",
+    "date": "2023-06-18",
+    "abstract": "Countless life-saving medical prescriptions in Sri Lanka remain recorded exclusively on palm-leaf (Puskola) manuscripts preserved by generational physician families (Paramparika Veda Parapura). This paper details the chemical degradation risks facing cured palmyra and talipot leaves, the traditional methods of fumigation with dummala oil, and the current status of high-resolution multispectral digitization efforts aimed at making ancient botanical taxonomies accessible to modern pharmacology.",
+    "tags": ["Puskola Poth", "Manuscripts", "Palm-Leaf", "Digital Archiving", "Hela Wedakama"],
+    "downloadUrl": "#",
+    "journal": "International Journal of Asian Manuscripts & Archives",
+    "volume": "14",
+    "issue": "1"
+  },
+  {
+    "id": "5",
+    "slug": "sanni-yakuma-ritual-psychotherapy",
+    "title": "Ritual Psychotherapy and Somatic Healing: The Psychopharmacology of the Sanni Yakuma",
+    "author": "Dr. Sarath Chandrasekara",
+    "authorAffiliation": "Faculty of Medicine, University of Kelaniya",
+    "date": "2022-12-05",
+    "abstract": "The 18 Sanni ritual of southern Sri Lanka is traditionally viewed through an ethnographic lens. However, our medical anthropological analysis reveals a sophisticated system of cognitive restructuring, sensory saturation, and psychodrama combined with aromatic herbal fumigation (dummala). We demonstrate how the traditional practitioner functioned as both physician and psychoanalyst to relieve somatic distress and stress-induced physical ailments.",
+    "tags": ["Ritual Healing", "Sanni Yakuma", "Psychotherapy", "Southern Heritage", "Traditional Healers"],
+    "downloadUrl": "#",
+    "journal": "Sri Lankan Cultural Anthropology Review",
+    "volume": "31",
+    "issue": "4"
+  }
+]
