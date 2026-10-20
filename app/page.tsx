@@ -36,6 +36,8 @@ const CORE_FOCUS_AREAS = [
   { icon: '🥁', label: 'Perahera & Festivals', desc: 'The historic Kandy Esala Perahera, sacred tooth relic processions, ritual Ves dance, drumming, and folk festivals.' },
 ];
 
+import HeroSlider from '@/components/HeroSlider';
+
 export default function HomePage() {
   const categories = categoriesData as HeritageCategoryItem[];
   // Featured exhibits: show Ayurveda highlights plus new categories
@@ -45,66 +47,8 @@ export default function HomePage() {
 
   return (
     <>
-      {/* ── Hero Banner ────────────────────────────────────────── */}
-      <section aria-label="Hero banner" style={{ position: 'relative', height: 'min(92vh, 740px)', overflow: 'hidden' }}>
-        <Image
-          src="/images/traditional-art.jpg"
-          alt="Traditional Sri Lankan temple murals, classical arts and cultural heritage"
-          fill
-          priority
-          style={{ objectFit: 'cover', objectPosition: 'center 40%' }}
-          sizes="100vw"
-        />
-        <div className="hero-overlay" style={{
-          position: 'absolute', inset: 0,
-          background: 'linear-gradient(to right, rgba(43,27,16,0.93) 0%, rgba(43,27,16,0.80) 55%, rgba(43,27,16,0.45) 100%)',
-          display: 'flex', alignItems: 'center',
-        }}>
-          <div className="container-site">
-            <div style={{ maxWidth: '720px' }}>
-              <div style={{
-                display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
-                background: 'rgba(201, 166, 107, 0.22)', border: '1px solid rgba(201, 166, 107, 0.5)',
-                padding: '0.35rem 0.95rem', borderRadius: '2rem', marginBottom: '1.25rem',
-              }}>
-                <Sparkles size={14} style={{ color: 'var(--color-accent)' }} />
-                <span style={{
-                  color: 'var(--color-accent)', fontWeight: 600, fontSize: '0.82rem',
-                  letterSpacing: '0.08em', textTransform: 'uppercase',
-                }}>
-                  Sri Lankan Intangible Cultural Heritage
-                </span>
-              </div>
-
-              <h1 style={{
-                fontFamily: 'var(--font-serif)', fontSize: 'clamp(2.3rem, 5.5vw, 3.8rem)',
-                color: '#fff', fontWeight: 800, lineHeight: 1.15, marginBottom: '1.25rem',
-              }}>
-                Living Treasures &<br />
-                <span style={{ color: 'var(--color-accent)' }}>Cultural Wisdom</span> of Sri Lanka
-              </h1>
-
-              <p style={{
-                color: 'rgba(255,255,255,0.92)', fontSize: 'clamp(1rem, 2vw, 1.15rem)',
-                lineHeight: 1.75, marginBottom: '2rem', maxWidth: '620px',
-              }}>
-                Dedicated to safeguarding, documenting, and celebrating the living soul of Sri Lanka — from classical temple art, master handicrafts, brassware, and ritual masks to ancient Hela Wedakama & Ayurveda, sacred landscapes, and majestic peraheras.
-              </p>
-
-              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-                <Link href="/museum" className="btn-accent" id="hero-cta-museum">
-                  Explore Heritage Museum <ArrowRight size={16} />
-                </Link>
-                <Link href="/shop" className="btn-secondary"
-                  style={{ borderColor: 'rgba(255,255,255,0.7)', color: '#fff' }}
-                  id="hero-cta-shop">
-                  Heritage Marketplace & Crafts
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* ── Hero Banner with Auto-Slide ────────────────────────── */}
+      <HeroSlider />
 
       {/* ── Key Statistics Bar ──────────────────────────────────── */}
       <section aria-label="Key statistics" style={{
