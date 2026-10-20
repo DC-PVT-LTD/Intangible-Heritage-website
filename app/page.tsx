@@ -1,51 +1,55 @@
 /**
  * app/page.tsx — Home Page
- * Intangible Heritage: Preserving Sri Lanka's Traditional Medical & Indigenous Healing Wisdom
+ * Intangible Heritage: Preserving Sri Lanka's Intangible Cultural Heritage
  */
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, ChevronRight, BookOpen, CalendarDays, Sparkles, ShieldCheck } from 'lucide-react';
+import { ArrowRight, ChevronRight, BookOpen, CalendarDays, Sparkles, ShieldCheck, Compass } from 'lucide-react';
+import categoriesData from '@/data/categories.json';
 import museumData from '@/data/museum.json';
 import eventsData from '@/data/events.json';
 import articlesData from '@/data/articles.json';
-import type { MuseumItem, Event, Article } from '@/lib/types';
+import type { MuseumItem, Event, Article, HeritageCategoryItem } from '@/lib/types';
 import { formatDate, truncate } from '@/lib/utils';
 
 export const metadata: Metadata = {
-  title: 'Home — Preserving Traditional Medical & Indigenous Heritage of Sri Lanka',
+  title: 'Home — Preserving Sri Lanka’s Intangible Cultural Heritage',
   description:
-    'Intangible Heritage Sri Lanka — Documenting, preserving and celebrating Hela Wedakama, antique Thel Thulāva vessels, ancient palm-leaf medical manuscripts, and living healing traditions.',
+    'Intangible Heritage Sri Lanka — Documenting, preserving and celebrating traditional Art, Crafts, Brassware, Masks, Hela Wedakama & Ayurveda, Cultural Landscapes, and Perahera Festivals.',
 };
 
 const STATS = [
-  { value: '2,500+', label: 'Years of Healing Heritage', desc: 'Continuous lineage since King Buddhadasa' },
-  { value: '1,200+', label: 'Manuscript Formulations', desc: 'Digitized from sacred Puskola Poth' },
-  { value: '80+',    label: 'Lineage Master Healers',   desc: 'Hereditary Wedamahathwaru network' },
-  { value: '350+',   label: 'Conserved Implements',      desc: 'Thel Thulāva, Beheth Oru & mortars' },
+  { value: '2,500+', label: 'Years of Living Heritage', desc: 'Unbroken island cultural lineages' },
+  { value: '7 Domains', label: 'Main Heritage Categories', desc: 'Art, Crafts, Brassware, Masks, Ayurveda & more' },
+  { value: '1,200+', label: 'Documented Traditions & Texts', desc: 'From sacred Puskola Poth to folk rituals' },
+  { value: '350+',   label: 'Conserved Artifacts & Implements', desc: 'Thel Thulāva, brass lamps, masks & tools' },
 ];
 
-const HERITAGE_PILLARS = [
-  { icon: '🏺', label: 'Thel Thulāva & Implements', desc: 'Antique brass oil pourers, stone kalka gal, and sacred dispensing vessels.' },
-  { icon: '🌿', label: 'Hela Wedakama & Ayurveda',  desc: 'Ancient indigenous herbal healing, pulse diagnosis, and decoction therapies.' },
-  { icon: '📜', label: 'Puskola Poth Manuscripts',  desc: 'Palm-leaf medical treatises, Sarartha Sangrahaya, and secret lineage recipes.' },
-  { icon: '🍶', label: 'Thel Sindima (Herbal Oils)',desc: 'Artisanal formulation of Pinda, Nilyadi, and classical restorative oils.' },
-  { icon: '🏛️', label: 'Ancient Hospital Sites',     desc: 'Archaeological study of Mihintale and Polonnaruwa medicinal bath ruins.' },
-  { icon: '🎭', label: 'Ritual Psychotherapy',       desc: 'Sanni Yakuma healing masks, fumigation rituals, and psycho-spiritual therapy.' },
+const CORE_FOCUS_AREAS = [
+  { icon: '🎨', label: 'Art', desc: 'Traditional Sri Lankan temple paintings, Sigiriya frescoes, rock murals, and classical Buddhist visual arts.' },
+  { icon: '🧵', label: 'Crafts', desc: 'Hereditary handicrafts, Dumbara reed mat weaving, handloom textiles, wood carving, and traditional pottery.' },
+  { icon: '🪔', label: 'Brassware', desc: 'Kandyan brass casting, standing ceremonial oil lamps (Pahana), ritual offering vessels, and lost-wax metallurgy.' },
+  { icon: '🎭', label: 'Masks', desc: 'Ambalangoda folk masks, Raksha guardian masks, traditional Kolam theatre, and therapeutic Sanni Yakuma masks.' },
+  { icon: '🌿', label: 'Ayurveda', desc: 'Ancient Hela Wedakama indigenous medicine, royal hospital ruins, palm-leaf medical texts, and medicated herbal oils.' },
+  { icon: '🏞️', label: 'Heritage Landscapes', desc: 'Ancient hydraulic systems, Sigiriya water gardens, Ritigala forest monasteries, and sacred mountain ecosystems.' },
+  { icon: '🥁', label: 'Perahera & Festivals', desc: 'The historic Kandy Esala Perahera, sacred tooth relic processions, ritual Ves dance, drumming, and folk festivals.' },
 ];
 
 export default function HomePage() {
-  const featured = (museumData as MuseumItem[]).slice(0, 4);
+  const categories = categoriesData as HeritageCategoryItem[];
+  // Featured exhibits: show Ayurveda highlights plus new categories
+  const featured = (museumData as MuseumItem[]).slice(0, 8);
   const upcoming = (eventsData as Event[]).filter(e => e.status === 'upcoming').slice(0, 3);
   const latest = (articlesData as Article[]).slice(0, 3);
 
   return (
     <>
       {/* ── Hero Banner ────────────────────────────────────────── */}
-      <section aria-label="Hero banner" style={{ position: 'relative', height: 'min(92vh, 720px)', overflow: 'hidden' }}>
+      <section aria-label="Hero banner" style={{ position: 'relative', height: 'min(92vh, 740px)', overflow: 'hidden' }}>
         <Image
-          src="/images/thel-thulava.jpg"
-          alt="Antique Sri Lankan brass Thel Thulava oil pourer with traditional Ayurvedic herbs"
+          src="/images/traditional-art.jpg"
+          alt="Traditional Sri Lankan temple murals, classical arts and cultural heritage"
           fill
           priority
           style={{ objectFit: 'cover', objectPosition: 'center 40%' }}
@@ -53,22 +57,22 @@ export default function HomePage() {
         />
         <div className="hero-overlay" style={{
           position: 'absolute', inset: 0,
-          background: 'linear-gradient(to right, rgba(43,27,16,0.92) 0%, rgba(43,27,16,0.78) 55%, rgba(43,27,16,0.4) 100%)',
+          background: 'linear-gradient(to right, rgba(43,27,16,0.93) 0%, rgba(43,27,16,0.80) 55%, rgba(43,27,16,0.45) 100%)',
           display: 'flex', alignItems: 'center',
         }}>
           <div className="container-site">
-            <div style={{ maxWidth: '680px' }}>
+            <div style={{ maxWidth: '720px' }}>
               <div style={{
                 display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
-                background: 'rgba(201, 166, 107, 0.2)', border: '1px solid rgba(201, 166, 107, 0.45)',
-                padding: '0.35rem 0.85rem', borderRadius: '2rem', marginBottom: '1.25rem',
+                background: 'rgba(201, 166, 107, 0.22)', border: '1px solid rgba(201, 166, 107, 0.5)',
+                padding: '0.35rem 0.95rem', borderRadius: '2rem', marginBottom: '1.25rem',
               }}>
                 <Sparkles size={14} style={{ color: 'var(--color-accent)' }} />
                 <span style={{
                   color: 'var(--color-accent)', fontWeight: 600, fontSize: '0.82rem',
                   letterSpacing: '0.08em', textTransform: 'uppercase',
                 }}>
-                  Sri Lankan Traditional Medical Heritage
+                  Sri Lankan Intangible Cultural Heritage
                 </span>
               </div>
 
@@ -76,25 +80,25 @@ export default function HomePage() {
                 fontFamily: 'var(--font-serif)', fontSize: 'clamp(2.3rem, 5.5vw, 3.8rem)',
                 color: '#fff', fontWeight: 800, lineHeight: 1.15, marginBottom: '1.25rem',
               }}>
-                Living Wisdom of<br />
-                <span style={{ color: 'var(--color-accent)' }}>Hela Wedakama</span> & Heritage
+                Living Treasures &<br />
+                <span style={{ color: 'var(--color-accent)' }}>Cultural Wisdom</span> of Sri Lanka
               </h1>
 
               <p style={{
-                color: 'rgba(255,255,255,0.9)', fontSize: 'clamp(1rem, 2vw, 1.15rem)',
-                lineHeight: 1.7, marginBottom: '2rem', maxWidth: '580px',
+                color: 'rgba(255,255,255,0.92)', fontSize: 'clamp(1rem, 2vw, 1.15rem)',
+                lineHeight: 1.75, marginBottom: '2rem', maxWidth: '620px',
               }}>
-                Dedicated to the preservation, scientific documentation, and living practice of Sri Lanka’s ancient healing wisdom — from sacred Thel Thulāva vessels and palm-leaf manuscripts to hereditary medicinal oils.
+                Dedicated to safeguarding, documenting, and celebrating the living soul of Sri Lanka — from classical temple art, master handicrafts, brassware, and ritual masks to ancient Hela Wedakama & Ayurveda, sacred landscapes, and majestic peraheras.
               </p>
 
               <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
                 <Link href="/museum" className="btn-accent" id="hero-cta-museum">
-                  Explore Museum & Implements <ArrowRight size={16} />
+                  Explore Heritage Museum <ArrowRight size={16} />
                 </Link>
                 <Link href="/shop" className="btn-secondary"
                   style={{ borderColor: 'rgba(255,255,255,0.7)', color: '#fff' }}
                   id="hero-cta-shop">
-                  Traditional Apothecary & Oils
+                  Heritage Marketplace & Crafts
                 </Link>
               </div>
             </div>
@@ -102,7 +106,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── IPM-Style Statistical Highlight Bar ────────────────── */}
+      {/* ── Key Statistics Bar ──────────────────────────────────── */}
       <section aria-label="Key statistics" style={{
         background: 'var(--color-primary)',
         borderBottom: '2px solid rgba(201,166,107,0.3)',
@@ -136,8 +140,93 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Heritage Pillars ───────────────────────────────────── */}
-      <section aria-label="Heritage pillars" style={{ background: '#FAF6F0', paddingBlock: '4.5rem' }}>
+      {/* ── Seven Main Heritage Categories (Image Cards) ────────── */}
+      <section aria-label="Seven Heritage Categories" style={{ background: '#fff', paddingBlock: '5rem' }}>
+        <div className="container-site">
+          <div style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto 3rem' }}>
+            <p style={{
+              color: 'var(--color-accent)', fontWeight: 700, fontSize: '0.85rem',
+              letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '0.5rem',
+            }}>
+              Explore Our Living Heritage
+            </p>
+            <h2 className="section-title">Seven Main Heritage Categories</h2>
+            <p style={{ color: 'var(--color-secondary)', fontSize: '0.98rem', marginTop: '0.5rem', lineHeight: 1.7 }}>
+              Discover the profound cultural tapestry of Sri Lanka across visual arts, master craft traditions, sacred metallurgy, ritual masks, holistic healing, sacred topography, and festive spectacles.
+            </p>
+          </div>
+
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+            gap: '1.75rem',
+          }}>
+            {categories.map(cat => (
+              <article key={cat.id} className="heritage-card" style={{ display: 'flex', flexDirection: 'column' }}>
+                <div style={{ position: 'relative', aspectRatio: '16/10', overflow: 'hidden' }}>
+                  <Image
+                    src={cat.image}
+                    alt={cat.name}
+                    fill
+                    style={{ objectFit: 'cover', transition: 'transform 0.4s ease' }}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="category-card-img"
+                  />
+                  <div style={{
+                    position: 'absolute', top: '0.75rem', left: '0.75rem',
+                    background: 'rgba(43,27,16,0.85)', backdropFilter: 'blur(4px)',
+                    color: 'var(--color-accent)',
+                    padding: '0.25rem 0.65rem', borderRadius: '2rem',
+                    fontSize: '0.78rem', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '0.35rem',
+                  }}>
+                    <span>{cat.icon}</span>
+                    <span>{cat.name}</span>
+                  </div>
+                </div>
+
+                <div style={{ padding: '1.4rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
+                  <h3 style={{
+                    fontFamily: 'var(--font-serif)', fontSize: '1.2rem', fontWeight: 700,
+                    color: 'var(--color-primary)', marginBottom: '0.5rem', lineHeight: 1.3,
+                  }}>
+                    {cat.name}
+                  </h3>
+                  <p style={{ fontSize: '0.86rem', color: 'var(--color-secondary)', lineHeight: 1.65, flex: 1, marginBottom: '1.25rem' }}>
+                    {cat.shortDescription}
+                  </p>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid var(--color-brown-50)', paddingTop: '0.85rem' }}>
+                    <Link
+                      href={`/museum?category=${encodeURIComponent(cat.name)}`}
+                      style={{
+                        display: 'inline-flex', alignItems: 'center', gap: '0.35rem',
+                        fontSize: '0.86rem', fontWeight: 700, color: 'var(--color-primary)', textDecoration: 'none',
+                      }}
+                      className="cat-link"
+                    >
+                      View Exhibits <ChevronRight size={15} />
+                    </Link>
+                    <Link
+                      href={`/shop?category=${encodeURIComponent(cat.name)}`}
+                      style={{
+                        fontSize: '0.78rem', fontWeight: 600, color: 'var(--color-accent)', textDecoration: 'none',
+                      }}
+                    >
+                      Shop Items →
+                    </Link>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+        <style>{`
+          .category-card-img:hover { transform: scale(1.06); }
+          .cat-link:hover { color: var(--color-accent) !important; }
+        `}</style>
+      </section>
+
+      {/* ── Core Focus Areas (7 Heritage Pillars) ───────────────── */}
+      <section aria-label="Core Focus Areas" style={{ background: '#FAF6F0', paddingBlock: '4.5rem' }}>
         <div className="container-site">
           <div style={{ textAlign: 'center', maxWidth: '640px', margin: '0 auto 3rem' }}>
             <p style={{
@@ -146,33 +235,33 @@ export default function HomePage() {
             }}>
               Core Focus Areas
             </p>
-            <h2 className="section-title">Domains of Intangible Healing Heritage</h2>
+            <h2 className="section-title">Domains of Intangible Heritage</h2>
             <p style={{ color: 'var(--color-secondary)', fontSize: '0.95rem', marginTop: '0.5rem' }}>
-              Safeguarding the tangible implements and intangible knowledge systems that have healed generations for millennia.
+              Safeguarding the sacred implements, living artisanal knowledge, and cultural expressions passed down through generations.
             </p>
           </div>
 
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-            gap: '1.75rem',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+            gap: '1.5rem',
           }}>
-            {HERITAGE_PILLARS.map(p => (
+            {CORE_FOCUS_AREAS.map(p => (
               <div key={p.label} className="heritage-card" style={{
                 padding: '1.75rem',
                 background: '#fff',
                 borderRadius: '0.75rem',
                 border: '1px solid rgba(92,58,33,0.1)',
-                display: 'flex', flexDirection: 'column', gap: '0.75rem',
+                display: 'flex', flexDirection: 'column', gap: '0.65rem',
               }}>
-                <div style={{ fontSize: '2.4rem' }}>{p.icon}</div>
+                <div style={{ fontSize: '2.2rem' }}>{p.icon}</div>
                 <h3 style={{
                   fontFamily: 'var(--font-serif)', fontSize: '1.15rem',
                   fontWeight: 700, color: 'var(--color-primary)',
                 }}>
                   {p.label}
                 </h3>
-                <p style={{ fontSize: '0.88rem', color: 'var(--color-secondary)', lineHeight: 1.65 }}>
+                <p style={{ fontSize: '0.86rem', color: 'var(--color-secondary)', lineHeight: 1.65 }}>
                   {p.desc}
                 </p>
               </div>
@@ -181,7 +270,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── About Intro: The Living Apothecary ─────────────────── */}
+      {/* ── About Narrative: Preserving Living Wisdom ────────────── */}
       <section aria-label="About Intangible Heritage" style={{ paddingBlock: '5rem', background: '#fff' }}>
         <div className="container-site">
           <div style={{
@@ -193,23 +282,23 @@ export default function HomePage() {
                 color: 'var(--color-accent)', fontWeight: 700, fontSize: '0.85rem',
                 letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.5rem',
               }}>
-                The Legacy of Hela Wedakama
+                Living Traditions & Wisdom
               </p>
               <h2 className="section-title" style={{ marginBottom: '1.25rem' }}>
-                Custodians of Ancient Medical Science
+                Custodians of Sri Lanka’s Intangible Wealth
               </h2>
               <p style={{ color: 'var(--color-secondary)', lineHeight: 1.8, marginBottom: '1rem' }}>
-                Sri Lanka’s indigenous medical system, <strong>Hela Wedakama</strong>, predates modern pharmacopeias by over two millennia. Championed by historical physician-kings such as King Buddhadasa (author of the <em>Sarartha Sangrahaya</em>), it combines deep botanical knowledge, alchemy (Rasa Shastra), and holistic healing.
+                Sri Lanka possesses an extraordinary depth of cultural memory. Alongside our profound indigenous healing system, <strong>Hela Wedakama</strong>, pioneered by royal physicians like King Buddhadasa, the island preserves ancient rock murals, hereditary metalcraft guilds, sacred mask performances, and living ecological water landscapes.
               </p>
               <p style={{ color: 'var(--color-secondary)', lineHeight: 1.8, marginBottom: '1.5rem' }}>
-                We document rare ceremonial implements such as the <strong>Thel Thulāva</strong> (antique oil dispensing vessel), transcribe fragile palm-leaf manuscripts, and support living hereditary doctors (Wedamahathwaru) across Sri Lanka.
+                From antique ceremonial implements like the <strong>Thel Thulāva</strong> to hand-turned brass lamps, Ambalangoda masks, and ancient medical treatises written on cured palm leaves (Puskola Poth), our mission is to record, conserve, and celebrate every thread of Sri Lankan living heritage.
               </p>
               <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
                 <Link href="/about" className="btn-primary" id="home-about-link">
-                  Our Mission & History <ChevronRight size={16} />
+                  Our Mission & Mandate <ChevronRight size={16} />
                 </Link>
                 <Link href="/research" className="btn-secondary" id="home-research-btn">
-                  Read Research Papers
+                  Read Scholarly Research
                 </Link>
               </div>
             </div>
@@ -220,7 +309,7 @@ export default function HomePage() {
             }}>
               <Image
                 src="/images/hela-wedakama.jpg"
-                alt="Traditional Sri Lankan Hela Wedakama apothecary room with herbs and medicinal oils"
+                alt="Traditional Sri Lankan heritage documentation and living wisdom"
                 fill
                 style={{ objectFit: 'cover' }}
                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -233,14 +322,14 @@ export default function HomePage() {
                 display: 'flex', alignItems: 'center', gap: '0.5rem',
               }}>
                 <ShieldCheck size={16} style={{ color: 'var(--color-accent)' }} />
-                Authentic Heritage Documentation
+                Authentic Cultural Heritage Preservation
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── Featured Museum Items ──────────────────────────────── */}
+      {/* ── Featured Museum Exhibits (Across Categories) ────────── */}
       <section aria-label="Featured museum items" style={{ paddingBlock: '5rem', background: '#FAF6F0' }}>
         <div className="container-site">
           <div style={{
@@ -254,7 +343,7 @@ export default function HomePage() {
               }}>
                 Virtual Museum & Gallery
               </p>
-              <h2 className="section-title">Featured Medical & Sacred Artifacts</h2>
+              <h2 className="section-title">Featured Cultural & Sacred Artifacts</h2>
             </div>
             <Link href="/museum" className="btn-secondary" id="home-museum-link">
               View All Exhibits <ArrowRight size={15} />
@@ -262,7 +351,7 @@ export default function HomePage() {
           </div>
 
           <div style={{
-            display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(270px, 1fr))',
+            display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
             gap: '1.75rem',
           }}>
             {featured.map(item => (
@@ -281,12 +370,12 @@ export default function HomePage() {
                     background: 'var(--color-primary)', color: 'var(--color-accent)',
                     padding: '0.2rem 0.6rem', borderRadius: '0.3rem', fontSize: '0.72rem', fontWeight: 700,
                   }}>
-                    {item.category}
+                    {item.heritageCategory || item.category}
                   </div>
                 </div>
                 <div style={{ padding: '1.25rem' }}>
                   <h3 style={{
-                    fontFamily: 'var(--font-serif)', fontSize: '1.1rem', fontWeight: 700,
+                    fontFamily: 'var(--font-serif)', fontSize: '1.05rem', fontWeight: 700,
                     color: 'var(--color-primary)', marginBottom: '0.5rem', lineHeight: 1.3,
                   }}>
                     {item.title}
@@ -302,7 +391,7 @@ export default function HomePage() {
         <style>{`.card-img:hover { transform: scale(1.05); }`}</style>
       </section>
 
-      {/* ── Upcoming Events & Workshops ────────────────────────── */}
+      {/* ── Upcoming Events & Workshops (Across Categories) ─────── */}
       <section aria-label="Upcoming events" style={{ paddingBlock: '5rem', background: '#fff' }}>
         <div className="container-site">
           <div style={{
@@ -314,12 +403,12 @@ export default function HomePage() {
                 color: 'var(--color-accent)', fontWeight: 700, fontSize: '0.85rem',
                 letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.4rem',
               }}>
-                Education & Workshops
+                Education & Programs
               </p>
-              <h2 className="section-title">Upcoming Heritage Masterclasses</h2>
+              <h2 className="section-title">Upcoming Heritage Programs & Events</h2>
             </div>
             <Link href="/events" className="btn-secondary" id="home-events-link">
-              All Workshops <ArrowRight size={15} />
+              All Events & Workshops <ArrowRight size={15} />
             </Link>
           </div>
 
@@ -342,7 +431,7 @@ export default function HomePage() {
                     background: 'var(--color-accent)', color: 'var(--color-primary)',
                     padding: '0.25rem 0.65rem', borderRadius: '0.3rem', fontSize: '0.75rem', fontWeight: 700,
                   }}>
-                    {event.category}
+                    {event.heritageCategory || event.category}
                   </div>
                 </div>
                 <div style={{ padding: '1.25rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
@@ -371,7 +460,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Latest Research & Publications ─────────────────────── */}
+      {/* ── Latest Research & Scholarly Papers ──────────────────── */}
       <section aria-label="Latest research articles" style={{ paddingBlock: '5rem', background: '#FAF6F0' }}>
         <div className="container-site">
           <div style={{
@@ -383,12 +472,12 @@ export default function HomePage() {
                 color: 'var(--color-accent)', fontWeight: 700, fontSize: '0.85rem',
                 letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.4rem',
               }}>
-                Scientific & Heritage Research
+                Scientific & Cultural Research
               </p>
-              <h2 className="section-title">Latest Academic Publications</h2>
+              <h2 className="section-title">Latest Heritage Publications</h2>
             </div>
             <Link href="/research" className="btn-secondary" id="home-research-link">
-              View All Research <ArrowRight size={15} />
+              View All Publications <ArrowRight size={15} />
             </Link>
           </div>
 
@@ -405,6 +494,9 @@ export default function HomePage() {
                 </div>
                 <div style={{ flex: 1, minWidth: '220px' }}>
                   <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '0.4rem' }}>
+                    <span className="badge" style={{ fontSize: '0.72rem', background: 'var(--color-primary)', color: '#fff' }}>
+                      {article.heritageCategory || 'Heritage'}
+                    </span>
                     {article.tags.slice(0, 3).map(tag => (
                       <span key={tag} className="badge" style={{ fontSize: '0.72rem' }}>{tag}</span>
                     ))}
@@ -436,7 +528,7 @@ export default function HomePage() {
       </section>
 
       {/* ── CTA Banner ─────────────────────────────────────────── */}
-      <section aria-label="Support medical heritage" style={{
+      <section aria-label="Support Sri Lankan Heritage" style={{
         position: 'relative',
         background: 'linear-gradient(135deg, var(--color-primary) 0%, #3a1e0c 100%)',
         paddingBlock: '4.5rem',
@@ -444,22 +536,22 @@ export default function HomePage() {
         color: '#fff',
       }}>
         <div className="container-site">
-          <span style={{ fontSize: '2.5rem', display: 'block', marginBottom: '1rem' }}>🏺</span>
+          <span style={{ fontSize: '2.5rem', display: 'block', marginBottom: '1rem' }}>🏛️</span>
           <h2 style={{
             fontFamily: 'var(--font-serif)', fontSize: 'clamp(1.75rem, 4vw, 2.4rem)',
             color: '#fff', fontWeight: 700, marginBottom: '1rem',
           }}>
-            Safeguarding Sri Lanka’s Living Healing Wisdom
+            Safeguarding Sri Lanka’s Living Cultural Heritage
           </h2>
           <p style={{
-            color: 'rgba(255,255,255,0.85)', maxWidth: '620px', margin: '0 auto 2.25rem',
+            color: 'rgba(255,255,255,0.88)', maxWidth: '640px', margin: '0 auto 2.25rem',
             lineHeight: 1.75, fontSize: '1.05rem',
           }}>
-            Explore our curated traditional apothecary, acquire certified handcrafted Thel Thulāva replicas, or support the digital restoration of ancient palm-leaf medical texts.
+            Support traditional master artisans, acquire certified handcrafted brassware, decorative masks, and herbal oils, or partner with us in the scholarly digital preservation of ancient manuscripts and sacred monuments.
           </p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link href="/shop" className="btn-accent" id="home-shop-cta">
-              Visit Traditional Apothecary
+              Visit Cultural Marketplace
             </Link>
             <Link href="/contact" className="btn-secondary"
               style={{ borderColor: 'rgba(255,255,255,0.6)', color: '#fff' }} id="home-contact-cta">

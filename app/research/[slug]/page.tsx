@@ -46,6 +46,14 @@ export default async function ArticlePage({ params }: Props) {
             <ArrowLeft size={15} /> Back to Research
           </Link>
           <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '1rem' }}>
+            {article.heritageCategory && (
+              <span style={{
+                background: 'var(--color-accent)', color: 'var(--color-primary)',
+                padding: '0.2rem 0.65rem', borderRadius: '999px', fontSize: '0.78rem', fontWeight: 700,
+              }}>
+                {article.heritageCategory}
+              </span>
+            )}
             {article.tags.map(tag => (
               <span key={tag} style={{
                 background: 'rgba(201,166,107,0.3)', color: 'var(--color-accent)',

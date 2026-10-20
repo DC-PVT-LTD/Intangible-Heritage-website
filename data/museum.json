@@ -4,6 +4,7 @@
     "title": "Thel Thulāva (තෙල් තුලාව) — Antique Brass Oil Pourer",
     "description": "An authentic antique Sri Lankan brass Thel Thulāva, an exquisite ceremonial and medicinal oil dispensing vessel. Historically used by royal physicians and in sacred temple healing rituals to meticulously pour medicated herbal oils during Shirodhara and oil lamp ceremonies.",
     "category": "Medical Implements",
+    "heritageCategory": "Ayurveda",
     "image": "/images/thel-thulava.jpg",
     "photographer": "National Heritage Medical Archive",
     "year": 2024
@@ -13,6 +14,7 @@
     "title": "Hela Weda Apothecary & Herbarium",
     "description": "A traditional Sri Lankan Hela Wedakama apothecary room, featuring indigenous herbal drying racks, clay fermentation pots, stone grinding mortars (Wangedi), and botanical specimens harvested from sacred sanctuaries such as Ritigala.",
     "category": "Indigenous Medicine",
+    "heritageCategory": "Ayurveda",
     "image": "/images/hela-wedakama.jpg",
     "photographer": "Institute of Traditional Medicine",
     "year": 2023
@@ -22,6 +24,7 @@
     "title": "Beheth Oruwa (බෙහෙත් ඔරුව) — Ancient Medicinal Canoe",
     "description": "Carved from monolithic stone or hardwood, the Beheth Oruwa (medicinal canoe) was the centrepiece of ancient Sri Lankan monastery hospitals such as Mihintale (9th Century CE). Patients were immersed in warm medicinal herbal decoctions and oils for systemic healing.",
     "category": "Medical Implements",
+    "heritageCategory": "Ayurveda",
     "image": "/images/beheth-oruwa.jpg",
     "photographer": "Archaeological Survey Department",
     "year": 2024
@@ -31,6 +34,7 @@
     "title": "Puskola Poth (පුස්කොළ පොත්) — Medical Palm-Leaf Manuscripts",
     "description": "Ancient palm-leaf treatises containing sacred medical formulations, written in classical Sinhala script using an iron stylus (Panhinda). Includes copies of Sarartha Sangrahaya composed by King Buddhadasa (4th Century CE), the royal surgeon of Sri Lanka.",
     "category": "Manuscripts",
+    "heritageCategory": "Ayurveda",
     "image": "/images/puskola-poth.jpg",
     "photographer": "Palm-Leaf Conservation Centre",
     "year": 2023
@@ -40,6 +44,7 @@
     "title": "Thel Sindima & Traditional Medicated Oils (තෛල)",
     "description": "The complex ritual and biochemical preparation of classical Sri Lankan medicated oils (Thailaya), including Pinda, Maha Narayana, and Nilyadi. Extracted using slow clay pot boiling, decoction infusion, and aromatic herbal distillation.",
     "category": "Indigenous Medicine",
+    "heritageCategory": "Ayurveda",
     "image": "/images/herbal-oils.jpg",
     "photographer": "Ayurvedic Heritage Research Board",
     "year": 2024
@@ -49,8 +54,69 @@
     "title": "Maha Kola Sanniya & Healing Ritual Masks",
     "description": "The 18 Sanni healing masks used in traditional Sri Lankan ritual psychotherapy and exorcism (Sanni Yakuma). Each mask represents a specific psychological or physical ailment, used alongside herbal fumigation and mantra recitation for total patient recovery.",
     "category": "Ritual Healing",
+    "heritageCategory": "Ayurveda",
     "image": "/images/mask-carving.jpg",
     "photographer": "Southern Folk Theatre & Healing Society",
     "year": 2023
+  },
+  {
+    "id": "7",
+    "title": "Classical Temple Murals & Frescoes",
+    "description": "Masterpieces of sacred Sri Lankan visual art depicting Jataka tales, Buddhist cosmology, and celestial deities. Painted using natural plant saps, clay slips, and mineral ochres on lime-plastered rock surfaces, preserving centuries of artistic devotion.",
+    "category": "Murals & Paintings",
+    "heritageCategory": "Art",
+    "image": "/images/traditional-art.jpg",
+    "photographer": "National Cultural Heritage Archives",
+    "year": 2024
+  },
+  {
+    "id": "8",
+    "title": "Dumbara Handloom & Traditional Batik Tapestry",
+    "description": "Intricate handloom reed and textile craftsmanship originating from the hereditary craft guilds of the Dumbara valley and coastal batik masters. Features classical geometric motifs (Boku Rata) and vibrant wax-resist island iconography.",
+    "category": "Handicrafts & Textiles",
+    "heritageCategory": "Crafts",
+    "image": "/images/batik-craft.jpg",
+    "photographer": "Crafts Council Heritage Documentation",
+    "year": 2024
+  },
+  {
+    "id": "9",
+    "title": "Kandyan Ceremonial Brass Oil Lamp (Pahana)",
+    "description": "Solid hand-cast and engraved brass standing oil lamp adorned with a mythical rooster (Seevali / Gira) finial and lotus-petal oil reservoirs. An iconic masterpiece of Kandyan lost-wax brass metallurgy used to sanctify auspicious beginnings.",
+    "category": "Ceremonial Brass",
+    "heritageCategory": "Brassware",
+    "image": "/images/brassware-craft.jpg",
+    "photographer": "Traditional Metalcraft Guild Archives",
+    "year": 2024
+  },
+  {
+    "id": "10",
+    "title": "Gurulu Raksha & Traditional Ambalangoda Masks",
+    "description": "Hand-carved from seasoned Kaduru timber, the iconic Gurulu Raksha (Eagle Demon) mask portrays the mythical enemy of serpents, embodying protection and spiritual warding. Masterfully painted by hereditary southern woodcarving families.",
+    "category": "Folk & Demon Masks",
+    "heritageCategory": "Masks",
+    "image": "/images/mask-carving.jpg",
+    "photographer": "Ambalangoda Mask Museum Archive",
+    "year": 2023
+  },
+  {
+    "id": "11",
+    "title": "Sigiriya & Sacred Cultural Landscapes",
+    "description": "The 5th-century palace citadel and ancient water gardens of Sigiriya, blending monumental granite architecture, symmetrical hydraulic pools, and sacred boulder monasteries into one of Asia's oldest surviving landscaped urban plans.",
+    "category": "Cultural Landscapes",
+    "heritageCategory": "Heritage Landscapes",
+    "image": "/images/heritage-landscapes.jpg",
+    "photographer": "Archaeological Survey of Sri Lanka",
+    "year": 2024
+  },
+  {
+    "id": "12",
+    "title": "Kandy Esala Perahera — Sacred Procession",
+    "description": "Held annually in the sacred hill capital of Kandy, the Esala Perahera features hundreds of caparisoned tuskers, hereditary Ves dancers, torchbearers, and thunderous Geta Bera drummers in a living pageantry paying tribute to the Sacred Tooth Relic.",
+    "category": "Processions & Rituals",
+    "heritageCategory": "Perahera & Festivals",
+    "image": "/images/perahera-festival.jpg",
+    "photographer": "Temple of the Tooth Heritage Trust",
+    "year": 2024
   }
 ]

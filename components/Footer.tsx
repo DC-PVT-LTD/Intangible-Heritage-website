@@ -1,12 +1,13 @@
 'use client';
 /**
  * components/Footer.tsx
- * Site-wide footer with logo, description, quick links, contact, and social links.
+ * Site-wide footer with logo, description, categories, quick links, contact, and social links.
  */
 import Link from 'next/link';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
+import { HERITAGE_CATEGORIES } from '@/lib/types';
 
-/* Custom SVG social icons — lucide-react doesn't include social platform icons */
+/* Custom SVG social icons */
 const FacebookIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
     <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
@@ -36,6 +37,7 @@ const QUICK_LINKS = [
   { label: 'Shop',                href: '/shop' },
   { label: 'Research & Articles', href: '/research' },
   { label: 'Contact Us',          href: '/contact' },
+  { label: 'Admin Portal',        href: '/admin' },
 ];
 
 const SOCIAL = [
@@ -44,7 +46,6 @@ const SOCIAL = [
   { label: 'YouTube',   href: '#', icon: YoutubeIcon },
   { label: 'Twitter',   href: '#', icon: TwitterIcon },
 ];
-
 
 export default function Footer() {
   return (
@@ -57,7 +58,7 @@ export default function Footer() {
           marginBottom: '2.5rem',
         }}>
           {/* Brand */}
-          <div>
+          <div style={{ maxWidth: '320px' }}>
             <Link href="/" style={{ textDecoration: 'none' }}>
               <span style={{
                 fontFamily: 'var(--font-serif)',
@@ -74,8 +75,8 @@ export default function Footer() {
                 Sri Lanka
               </span>
             </Link>
-            <p style={{ marginTop: '1rem', fontSize: '0.88rem', color: 'rgba(255,255,255,0.75)', lineHeight: 1.7 }}>
-              Preserving, documenting and scientifically safeguarding the living medical heritage, Hela Wedakama, Thel Thulāva implements, and indigenous healing traditions of Sri Lanka.
+            <p style={{ marginTop: '1rem', fontSize: '0.88rem', color: 'rgba(255,255,255,0.78)', lineHeight: 1.7 }}>
+              Preserving, documenting, and scientifically safeguarding the living intangible cultural heritage of Sri Lanka — traditional visual arts, crafts, sacred brassware, ritual masks, Hela Wedakama healing traditions, cultural landscapes, and festival pageantry.
             </p>
             {/* Social icons */}
             <div style={{ display: 'flex', gap: '0.75rem', marginTop: '1.25rem' }}>
@@ -95,6 +96,28 @@ export default function Footer() {
                 </a>
               ))}
             </div>
+          </div>
+
+          {/* Heritage Categories */}
+          <div>
+            <h3 style={{ fontSize: '0.9rem', fontWeight: 700, textTransform: 'uppercase',
+              letterSpacing: '0.08em', color: 'var(--color-accent)', marginBottom: '1rem' }}>
+              Heritage Categories
+            </h3>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.45rem' }}>
+              {HERITAGE_CATEGORIES.map(cat => (
+                <li key={cat}>
+                  <Link
+                    href={`/museum?category=${encodeURIComponent(cat)}`}
+                    style={{ color: 'rgba(255,255,255,0.75)', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.15s' }}
+                    onMouseOver={e => (e.currentTarget.style.color = 'var(--color-accent)')}
+                    onMouseOut={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.75)')}
+                  >
+                    {cat}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* Quick links */}
@@ -125,7 +148,7 @@ export default function Footer() {
             </h3>
             <address style={{ fontStyle: 'normal', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               {[
-                { icon: MapPin, text: 'No. 12, Sri Jayawardenepura Mawatha,\nNugeagoda, Colombo, Sri Lanka' },
+                { icon: MapPin, text: 'No. 12, Sri Jayawardenepura Mawatha,\nNugegoda, Colombo, Sri Lanka' },
                 { icon: Phone, text: '+94 11 234 5678\n+94 77 123 4567' },
                 { icon: Mail,  text: 'info@intangibleheritage.lk' },
                 { icon: Clock, text: 'Mon – Fri: 9:00 am – 5:00 pm\nSat: 9:00 am – 1:00 pm' },
@@ -141,20 +164,26 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom bar */}
+        {/* Bottom copyright */}
         <div style={{
-          borderTop: '1px solid rgba(255,255,255,0.12)',
-          paddingTop: '1.25rem',
+          borderTop: '1px solid rgba(255,255,255,0.1)',
+          paddingTop: '1.5rem',
           display: 'flex',
-          flexWrap: 'wrap',
-          gap: '0.5rem',
           justifyContent: 'space-between',
           alignItems: 'center',
-          fontSize: '0.82rem',
+          flexWrap: 'wrap',
+          gap: '1rem',
+          fontSize: '0.8rem',
           color: 'rgba(255,255,255,0.5)',
         }}>
-          <span>© 2026 Intangible Heritage — Sri Lanka. All rights reserved.</span>
-          <span>Developed with ♥ for Sri Lankan Cultural Heritage</span>
+          <p style={{ margin: 0 }}>
+            © 2026 Intangible Heritage Sri Lanka. All rights reserved. Safeguarding living traditions, arts, and Ayurveda.
+          </p>
+          <div style={{ display: 'flex', gap: '1.25rem' }}>
+            <Link href="/about" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>About Us</Link>
+            <Link href="/contact" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>Contact</Link>
+            <Link href="/admin" style={{ color: 'var(--color-accent)', textDecoration: 'none' }}>Admin Login</Link>
+          </div>
         </div>
       </div>
     </footer>
