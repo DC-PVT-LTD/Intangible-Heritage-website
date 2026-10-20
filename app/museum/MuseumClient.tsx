@@ -1,44 +1,77 @@
 'use client';
 /**
  * app/museum/MuseumClient.tsx
- * Client component for gallery filtering, lightbox, and upload form.
+ * Client component for gallery filtering across all 7 heritage categories, lightbox, and details.
  */
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import Image from 'next/image';
-import { X, ZoomIn, Filter } from 'lucide-react';
+import { X, ZoomIn, Filter, Tag, Calendar, User } from 'lucide-react';
 import type { MuseumItem } from '@/lib/types';
+import { HERITAGE_CATEGORIES } from '@/lib/types';
 
-const CATEGORIES = ['All', 'Medical Implements', 'Indigenous Medicine', 'Manuscripts', 'Ritual Healing'] as const;
+const CATEGORY_FILTERS = ['All', ...HERITAGE_CATEGORIES] as const;
 
 interface Props { initialItems: MuseumItem[]; }
 
 export default function MuseumClient({ initialItems }: Props) {
+  const searchParams = useSearchParams();
+  const initialCategoryParam = searchParams.get('category');
+
   const [items] = useState<MuseumItem[]>(initialItems);
   const [activeCategory, setActiveCategory] = useState<string>('All');
   const [lightbox, setLightbox] = useState<MuseumItem | null>(null);
 
-  // ── Filter ──────────────────────────────────────────────────────
-  const filtered = activeCategory === 'All'
-    ? items
-    : items.filter(i => i.category === activeCategory);
+  // Sync category from URL parameter if present
+  useEffect(() => {
+    if (initialCategoryParam) {
+      const matched = CATEGORY_FILTERS.find(
+        c => c.toLowerCase() === initialCategoryParam.toLowerCase()
+      );
+      if (matched) {
+        setActiveCategory(matched);
+      }
+    }
+  }, [initialCategoryParam]);
+
+  // ── Filter matching logic (with full backward-compatibility for Ayurveda) ──
+  const filtered = items.filter(item => {
+    if (activeCategory === 'All') return true;
+
+    if (activeCategory === 'Ayurveda') {
+      return (
+        item.heritageCategory === 'Ayurveda' ||
+        item.category === 'Medical Implements' ||
+        item.category === 'Indigenous Medicine' ||
+        item.category === 'Manuscripts' ||
+        item.category === 'Ritual Healing'
+      );
+    }
+
+    return (
+      item.heritageCategory === activeCategory ||
+      (item.category && item.category.toLowerCase().includes(activeCategory.toLowerCase()))
+    );
+  });
 
   return (
     <>
       {/* ── Category filter ─────────────────────────────── */}
-      <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap', alignItems: 'center', marginBottom: '2rem' }}>
-        <Filter size={16} style={{ color: 'var(--color-secondary)' }} />
-        {CATEGORIES.map(cat => (
+      <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap', alignItems: 'center', marginBottom: '2.5rem' }}>
+        <Filter size={18} style={{ color: 'var(--color-primary)', marginRight: '0.2rem' }} />
+        {CATEGORY_FILTERS.map(cat => (
           <button
             key={cat}
-            id={`filter-${cat.toLowerCase().replace(/\s+/g, '-')}`}
+            id={`filter-${cat.toLowerCase().replace(/[\s&]+/g, '-')}`}
             onClick={() => setActiveCategory(cat)}
             style={{
-              padding: '0.4rem 1rem', borderRadius: '999px', fontSize: '0.85rem', fontWeight: 600,
+              padding: '0.45rem 1.15rem', borderRadius: '999px', fontSize: '0.86rem', fontWeight: 600,
               border: '1.5px solid',
               borderColor: activeCategory === cat ? 'var(--color-primary)' : 'var(--color-brown-100)',
-              background: activeCategory === cat ? 'var(--color-primary)' : 'transparent',
+              background: activeCategory === cat ? 'var(--color-primary)' : '#fff',
               color: activeCategory === cat ? '#fff' : 'var(--color-text)',
               cursor: 'pointer', transition: 'all 0.2s',
+              boxShadow: activeCategory === cat ? '0 2px 8px rgba(92,58,33,0.2)' : 'none',
             }}
           >
             {cat}
@@ -46,15 +79,31 @@ export default function MuseumClient({ initialItems }: Props) {
         ))}
       </div>
 
+      {/* ── Results count ─────────────────────────────────── */}
+      <div style={{ marginBottom: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', color: 'var(--color-secondary)', fontSize: '0.88rem' }}>
+        <span>Showing <strong>{filtered.length}</strong> exhibits in <strong>{activeCategory}</strong></span>
+        {activeCategory !== 'All' && (
+          <button
+            onClick={() => setActiveCategory('All')}
+            style={{ background: 'none', border: 'none', color: 'var(--color-accent)', cursor: 'pointer', fontWeight: 600, fontSize: '0.85rem' }}
+          >
+            Show All Exhibits
+          </button>
+        )}
+      </div>
+
       {/* ── Gallery grid ─────────────────────────────────── */}
       {filtered.length === 0 ? (
-        <p style={{ textAlign: 'center', color: 'var(--color-secondary)', padding: '3rem' }}>
-          No items in this category yet.
-        </p>
+        <div style={{ textAlign: 'center', color: 'var(--color-secondary)', padding: '4rem', background: '#fff', borderRadius: '1rem' }}>
+          <p style={{ fontSize: '1.1rem', marginBottom: '0.5rem' }}>No items in this category yet.</p>
+          <button onClick={() => setActiveCategory('All')} className="btn-secondary" style={{ marginTop: '1rem' }}>
+            View All Categories
+          </button>
+        </div>
       ) : (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '1.5rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '1.75rem' }}>
           {filtered.map(item => (
-            <article key={item.id} className="heritage-card" style={{ cursor: 'pointer' }}
+            <article key={item.id} className="heritage-card" style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column' }}
               onClick={() => setLightbox(item)}
               onKeyDown={e => e.key === 'Enter' && setLightbox(item)}
               tabIndex={0}
@@ -63,7 +112,7 @@ export default function MuseumClient({ initialItems }: Props) {
             >
               <div style={{ position: 'relative', aspectRatio: '3/2', overflow: 'hidden' }}>
                 <Image src={item.image} alt={item.title} fill
-                  style={{ objectFit: 'cover', transition: 'transform 0.35s ease' }}
+                  style={{ objectFit: 'cover', transition: 'transform 0.4s ease' }}
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="gallery-img"
                 />
@@ -74,23 +123,38 @@ export default function MuseumClient({ initialItems }: Props) {
                 }} className="gallery-overlay">
                   <ZoomIn size={36} style={{ color: '#fff', opacity: 0, transition: 'opacity 0.25s' }} className="zoom-icon" />
                 </div>
+                <div style={{ position: 'absolute', top: '0.75rem', left: '0.75rem', display: 'flex', gap: '0.35rem', flexWrap: 'wrap' }}>
+                  <span style={{
+                    background: 'var(--color-primary)', color: 'var(--color-accent)',
+                    padding: '0.2rem 0.6rem', borderRadius: '0.3rem', fontSize: '0.72rem', fontWeight: 700,
+                  }}>
+                    {item.heritageCategory || item.category}
+                  </span>
+                </div>
               </div>
-              <div style={{ padding: '1rem 1.1rem' }}>
-                <span className="badge" style={{ marginBottom: '0.4rem' }}>{item.category}</span>
-                <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '0.98rem', fontWeight: 700,
-                  color: 'var(--color-primary)', lineHeight: 1.3, marginBottom: '0.3rem' }}>
+              <div style={{ padding: '1.25rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
+                <span style={{ fontSize: '0.76rem', color: 'var(--color-accent)', fontWeight: 600, marginBottom: '0.3rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                  {item.category}
+                </span>
+                <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.05rem', fontWeight: 700,
+                  color: 'var(--color-primary)', lineHeight: 1.35, marginBottom: '0.4rem' }}>
                   {item.title}
                 </h3>
-                <p style={{ fontSize: '0.82rem', color: 'var(--color-secondary)', lineHeight: 1.6 }}>
-                  {item.description.slice(0, 100)}…
+                <p style={{ fontSize: '0.84rem', color: 'var(--color-secondary)', lineHeight: 1.6, flex: 1 }}>
+                  {item.description.slice(0, 115)}…
                 </p>
+                {item.year && (
+                  <div style={{ marginTop: '0.75rem', fontSize: '0.78rem', color: 'var(--color-secondary)', borderTop: '1px solid var(--color-brown-50)', paddingTop: '0.5rem' }}>
+                    Record Date / Era: <strong>{item.year}</strong>
+                  </div>
+                )}
               </div>
             </article>
           ))}
         </div>
       )}
 
-      {/* ── Lightbox ─────────────────────────────────────── */}
+      {/* ── Lightbox Modal ───────────────────────────────── */}
       {lightbox && (
         <div className="lightbox-overlay" role="dialog" aria-modal="true"
           aria-label={lightbox.title} onClick={() => setLightbox(null)}>
@@ -111,27 +175,46 @@ export default function MuseumClient({ initialItems }: Props) {
                 }}>
                 <X size={20} />
               </button>
-              <span style={{
-                position: 'absolute', top: '0.75rem', left: '0.75rem',
-                background: 'var(--color-accent)', color: 'var(--color-primary)',
-                padding: '0.2rem 0.65rem', borderRadius: '999px', fontSize: '0.78rem', fontWeight: 700,
-              }}>
-                {lightbox.category}
-              </span>
+              <div style={{ position: 'absolute', top: '0.75rem', left: '0.75rem', display: 'flex', gap: '0.4rem' }}>
+                <span style={{
+                  background: 'var(--color-accent)', color: 'var(--color-primary)',
+                  padding: '0.25rem 0.75rem', borderRadius: '999px', fontSize: '0.8rem', fontWeight: 700,
+                }}>
+                  {lightbox.heritageCategory || lightbox.category}
+                </span>
+                {lightbox.heritageCategory && (
+                  <span style={{
+                    background: 'rgba(255,255,255,0.92)', color: 'var(--color-primary)',
+                    padding: '0.25rem 0.65rem', borderRadius: '999px', fontSize: '0.78rem', fontWeight: 600,
+                  }}>
+                    {lightbox.category}
+                  </span>
+                )}
+              </div>
             </div>
-            <div style={{ padding: '1.5rem 2rem', overflowY: 'auto' }}>
-              <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.4rem', fontWeight: 700,
-                color: 'var(--color-primary)', marginBottom: '0.75rem' }}>
+            <div style={{ padding: '1.75rem 2rem', overflowY: 'auto' }}>
+              <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.45rem', fontWeight: 700,
+                color: 'var(--color-primary)', marginBottom: '0.85rem', lineHeight: 1.3 }}>
                 {lightbox.title}
               </h2>
-              <p style={{ color: 'var(--color-secondary)', lineHeight: 1.75, marginBottom: '0.75rem' }}>
+              <p style={{ color: 'var(--color-secondary)', lineHeight: 1.8, fontSize: '0.95rem', marginBottom: '1.25rem' }}>
                 {lightbox.description}
               </p>
-              {lightbox.photographer && (
-                <p style={{ fontSize: '0.8rem', color: 'var(--color-accent)', fontWeight: 600 }}>
-                  📷 {lightbox.photographer}{lightbox.year ? ` · ${lightbox.year}` : ''}
-                </p>
-              )}
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1.25rem', fontSize: '0.84rem', color: 'var(--color-accent)', fontWeight: 600, borderTop: '1px solid var(--color-brown-50)', paddingTop: '0.85rem' }}>
+                {lightbox.photographer && (
+                  <span style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+                    <User size={14} /> Curated Archive: {lightbox.photographer}
+                  </span>
+                )}
+                {lightbox.year && (
+                  <span style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+                    <Calendar size={14} /> Documentation Year: {lightbox.year}
+                  </span>
+                )}
+                <span style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+                  <Tag size={14} /> Domain: {lightbox.heritageCategory || lightbox.category}
+                </span>
+              </div>
             </div>
           </div>
         </div>

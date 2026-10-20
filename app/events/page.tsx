@@ -9,8 +9,9 @@ import type { Event } from '@/lib/types';
 import { formatDate } from '@/lib/utils';
 
 export const metadata: Metadata = {
-  title: 'Events & Exhibitions',
-  description: 'Upcoming and past cultural heritage exhibitions, workshops, and community events organised by Intangible Heritage Sri Lanka.',
+  title: 'Events & Exhibitions — Cultural Workshops, Symposia & Masterclasses',
+  description:
+    'Upcoming and past cultural heritage exhibitions, traditional art workshops, brass casting forums, Ayurveda masterclasses, and Perahera events in Sri Lanka.',
 };
 
 function EventCard({ event }: { event: Event }) {
@@ -23,7 +24,7 @@ function EventCard({ event }: { event: Event }) {
           className="event-img"
         />
         <div style={{
-          position: 'absolute', top: '0.75rem', left: '0.75rem', display: 'flex', gap: '0.4rem',
+          position: 'absolute', top: '0.75rem', left: '0.75rem', display: 'flex', gap: '0.4rem', flexWrap: 'wrap',
         }}>
           <span style={{
             background: event.status === 'upcoming' ? 'var(--color-accent)' : 'rgba(0,0,0,0.5)',
@@ -33,10 +34,10 @@ function EventCard({ event }: { event: Event }) {
             {event.status === 'upcoming' ? '● Upcoming' : 'Past'}
           </span>
           <span style={{
-            background: 'rgba(255,255,255,0.9)', color: 'var(--color-primary)',
+            background: 'var(--color-primary)', color: 'var(--color-accent)',
             padding: '0.2rem 0.6rem', borderRadius: '999px', fontSize: '0.72rem', fontWeight: 700,
           }}>
-            {event.category}
+            {event.heritageCategory || event.category}
           </span>
         </div>
       </div>
@@ -87,10 +88,10 @@ export default function EventsPage() {
           </p>
           <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(2rem, 5vw, 3rem)',
             fontWeight: 800, marginBottom: '1rem', lineHeight: 1.15 }}>
-            Medical Heritage & Masterclasses
+            Cultural Heritage Programs & Masterclasses
           </h1>
-          <p style={{ color: 'rgba(255,255,255,0.85)', maxWidth: '600px', margin: '0 auto', lineHeight: 1.7 }}>
-            Discover our practical Thel Sindima oil-brewing masterclasses, ancient hospital symposia, palm-leaf manuscript preservation workshops, and ethnobotanical field surveys.
+          <p style={{ color: 'rgba(255,255,255,0.88)', maxWidth: '640px', margin: '0 auto', lineHeight: 1.7 }}>
+            Discover our cultural exhibitions, craft workshops, traditional mural art masterclasses, ancient metallurgy forums, Sanni mask performances, and Hela Wedakama oil-formulation sessions.
           </p>
         </div>
       </div>
@@ -101,7 +102,7 @@ export default function EventsPage() {
           {/* ── Upcoming ───────────────────────────────── */}
           <section aria-label="Upcoming events" style={{ marginBottom: '4rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
-              <h2 className="section-title" style={{ margin: 0 }}>Upcoming Events</h2>
+              <h2 className="section-title" style={{ margin: 0 }}>Upcoming Events & Programs</h2>
               <span style={{
                 background: 'var(--color-accent)', color: 'var(--color-primary)',
                 borderRadius: '999px', padding: '0.15rem 0.6rem', fontSize: '0.8rem', fontWeight: 700,
@@ -110,7 +111,7 @@ export default function EventsPage() {
               </span>
             </div>
             {upcoming.length === 0 ? (
-              <p style={{ color: 'var(--color-secondary)' }}>No upcoming events at this time. Check back soon!</p>
+              <p style={{ color: 'var(--color-secondary)' }}>No upcoming events currently scheduled. Check back soon!</p>
             ) : (
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1.75rem' }}>
                 {upcoming.map(e => <EventCard key={e.id} event={e} />)}
@@ -124,7 +125,7 @@ export default function EventsPage() {
           {/* ── Past ───────────────────────────────────── */}
           <section aria-label="Past events">
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
-              <h2 className="section-title" style={{ margin: 0, color: 'var(--color-secondary)' }}>Past Events</h2>
+              <h2 className="section-title" style={{ margin: 0, color: 'var(--color-secondary)' }}>Past Events & Archives</h2>
               <span style={{
                 background: 'var(--color-brown-100)', color: 'var(--color-secondary)',
                 borderRadius: '999px', padding: '0.15rem 0.6rem', fontSize: '0.8rem', fontWeight: 700,
@@ -135,7 +136,7 @@ export default function EventsPage() {
             {past.length === 0 ? (
               <p style={{ color: 'var(--color-secondary)' }}>No past events recorded.</p>
             ) : (
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1.75rem', opacity: 0.85 }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1.75rem', opacity: 0.9 }}>
                 {past.map(e => <EventCard key={e.id} event={e} />)}
               </div>
             )}

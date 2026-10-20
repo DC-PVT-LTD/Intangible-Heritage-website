@@ -2,13 +2,15 @@
  * app/museum/page.tsx — Museum Page (server component wrapper)
  */
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
 import museumData from '@/data/museum.json';
 import type { MuseumItem } from '@/lib/types';
 import MuseumClient from './MuseumClient';
 
 export const metadata: Metadata = {
-  title: 'Museum',
-  description: 'Explore the Intangible Heritage virtual museum — a gallery of photographs documenting Kandyan dance, mask carving, Vesak lanterns, batik, traditional music and more.',
+  title: 'Museum — Sacred Implements, Art, Crafts & Cultural Artifacts',
+  description:
+    'Explore the Intangible Heritage virtual museum — a visual archive documenting classical temple murals, master crafts, brassware, ritual masks, ancient Hela Wedakama implements, sacred landscapes, and perahera traditions.',
 };
 
 export default function MuseumPage() {
@@ -24,21 +26,23 @@ export default function MuseumPage() {
         <div className="container-site">
           <p style={{ color: 'var(--color-accent)', fontWeight: 600, fontSize: '0.85rem',
             letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
-            Virtual Museum
+            Virtual Museum & Archives
           </p>
           <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(2rem, 5vw, 3rem)',
             fontWeight: 800, marginBottom: '1rem', lineHeight: 1.15 }}>
-            Medical & Sacred Heritage Gallery
+            Cultural & Sacred Heritage Gallery
           </h1>
-          <p style={{ color: 'rgba(255,255,255,0.85)', maxWidth: '620px', margin: '0 auto', lineHeight: 1.7 }}>
-            A curated visual archive documenting ancient Sri Lankan healing implements (including the sacred Thel Thulāva and Beheth Oruwa), medical palm-leaf treatises, indigenous apothecaries, and ritual healing traditions.
+          <p style={{ color: 'rgba(255,255,255,0.88)', maxWidth: '680px', margin: '0 auto', lineHeight: 1.7 }}>
+            A curated visual archive preserving ancient Sri Lankan healing implements (including the sacred Thel Thulāva and Beheth Oruwa), classical temple murals, master craft traditions, ornate brass lamps, ritual masks, monumental landscapes, and sacred peraheras.
           </p>
         </div>
       </div>
 
       <div style={{ paddingBlock: '3rem' }}>
         <div className="container-site">
-          <MuseumClient initialItems={museumData as MuseumItem[]} />
+          <Suspense fallback={<p style={{ textAlign: 'center', padding: '3rem', color: 'var(--color-secondary)' }}>Loading gallery...</p>}>
+            <MuseumClient initialItems={museumData as MuseumItem[]} />
+          </Suspense>
         </div>
       </div>
     </>

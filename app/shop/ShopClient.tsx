@@ -49,7 +49,7 @@ export default function ShopClient({ products }: Props) {
               position: 'absolute', top: '0.75rem', left: '0.75rem',
               background: 'rgba(255,255,255,0.92)',
             }}>
-              {product.category}
+              {product.heritageCategory || product.category}
             </span>
           </div>
 

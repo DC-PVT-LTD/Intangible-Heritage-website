@@ -6,6 +6,7 @@
     "price": 14500,
     "image": "/images/thel-thulava.jpg",
     "category": "Implements",
+    "heritageCategory": "Ayurveda",
     "inStock": true
   },
   {
@@ -15,6 +16,7 @@
     "price": 6800,
     "image": "/images/herbal-oils.jpg",
     "category": "Medicinal Oils",
+    "heritageCategory": "Ayurveda",
     "inStock": true
   },
   {
@@ -24,6 +26,7 @@
     "price": 8500,
     "image": "/images/hela-wedakama.jpg",
     "category": "Implements",
+    "heritageCategory": "Ayurveda",
     "inStock": true
   },
   {
@@ -33,6 +36,7 @@
     "price": 19500,
     "image": "/images/puskola-poth.jpg",
     "category": "Publications",
+    "heritageCategory": "Ayurveda",
     "inStock": true
   },
   {
@@ -42,6 +46,7 @@
     "price": 4200,
     "image": "/images/beheth-oruwa.jpg",
     "category": "Herbal Teas",
+    "heritageCategory": "Ayurveda",
     "inStock": true
   },
   {
@@ -51,6 +56,67 @@
     "price": 12500,
     "image": "/images/mask-carving.jpg",
     "category": "Ritual Art",
+    "heritageCategory": "Masks",
     "inStock": false
+  },
+  {
+    "id": "7",
+    "name": "Classical Temple Mural Fine Art Canvas",
+    "description": "Archival fine art canvas reproduction of Kandyan-era temple ceiling murals. Hand-stretched onto sustainable timber frame with earth-toned mineral pigment highlights depicting celestial lotuses and guardian figures.",
+    "price": 16500,
+    "image": "/images/traditional-art.jpg",
+    "category": "Traditional Art",
+    "heritageCategory": "Art",
+    "inStock": true
+  },
+  {
+    "id": "8",
+    "name": "Artisanal Handwoven Dumbara Reed Tapestry",
+    "description": "Authentic handloom reed mat crafted by master weavers of the Dumbara valley using locally cured Hana fiber and vegetal dyes. Features ancient geometric chevron motifs (Boku Rata) recognized by UNESCO.",
+    "price": 9200,
+    "image": "/images/batik-craft.jpg",
+    "category": "Handmade Crafts",
+    "heritageCategory": "Crafts",
+    "inStock": true
+  },
+  {
+    "id": "9",
+    "name": "Solid Brass Kandyan Ceremonial Oil Lamp (Pahana)",
+    "description": "Hand-turned and etched solid brass ceremonial lamp featuring a majestic rooster crest, detachable oil reservoir with multiple wicks, and heavy engraved pedestal. Handcrafted by Pilimathalawa artisans.",
+    "price": 18500,
+    "image": "/images/brassware-craft.jpg",
+    "category": "Brassware Products",
+    "heritageCategory": "Brassware",
+    "inStock": true
+  },
+  {
+    "id": "10",
+    "name": "Ambalangoda Hand-Carved Mayura Raksha Mask",
+    "description": "Traditional southern Sri Lankan peacock demon mask hand-carved from seasoned Kaduru wood. Painted in vibrant non-toxic lacquers, traditionally hung at home entrances to ward off misfortune and invite prosperity.",
+    "price": 11500,
+    "image": "/images/mask-carving.jpg",
+    "category": "Decorative Masks",
+    "heritageCategory": "Masks",
+    "inStock": true
+  },
+  {
+    "id": "11",
+    "name": "Sigiriya & Sacred Landscapes Archival Monograph",
+    "description": "Hardbound photographic and archaeological volume documenting ancient Sri Lankan water gardens, Ritigala forest sanctuaries, and rock fortress architecture with topographic fold-out maps.",
+    "price": 5400,
+    "image": "/images/heritage-landscapes.jpg",
+    "category": "Heritage Publications",
+    "heritageCategory": "Heritage Landscapes",
+    "inStock": true
+  },
+  {
+    "id": "12",
+    "name": "Kandyan Geta Bera Artisan Miniature Drum",
+    "description": "Traditional miniature double-headed Kandyan drum carved from seasoned Jackwood with monkey skin and cowhide acoustic membranes. Hand-tuned by hereditary percussionists from the central province.",
+    "price": 7800,
+    "image": "/images/perahera-festival.jpg",
+    "category": "Cultural Heritage",
+    "heritageCategory": "Perahera & Festivals",
+    "inStock": true
   }
 ]

@@ -3,13 +3,15 @@
  */
 import type { Metadata } from 'next';
 import { BookOpen } from 'lucide-react';
+import { Suspense } from 'react';
 import articlesData from '@/data/articles.json';
 import type { Article } from '@/lib/types';
 import ResearchClient from './ResearchClient';
 
 export const metadata: Metadata = {
-  title: 'Research & Articles',
-  description: 'Scientific articles and research papers on Sri Lankan intangible cultural heritage — Kandyan dance, mask carving, traditional music, Vesak, and more.',
+  title: 'Research & Scholarly Publications — Sri Lankan Intangible Cultural Heritage',
+  description:
+    'Scientific articles and research papers on Sri Lankan intangible cultural heritage — traditional art, metallurgy, crafts, masks, Hela Wedakama pharmacopeia, sacred landscapes, and festival rituals.',
 };
 
 export default function ResearchPage() {
@@ -26,15 +28,17 @@ export default function ResearchPage() {
             fontWeight: 800, marginBottom: '1rem', lineHeight: 1.15 }}>
             Research & Scholarly Publications
           </h1>
-          <p style={{ color: 'rgba(255,255,255,0.85)', maxWidth: '620px', margin: '0 auto', lineHeight: 1.7 }}>
-            Peer-reviewed papers, archaeometallurgical analyses of implements like the Thel Thulāva, pharmacognosy of Hela Wedakama decoctions, and palm-leaf manuscript preservation studies.
+          <p style={{ color: 'rgba(255,255,255,0.88)', maxWidth: '660px', margin: '0 auto', lineHeight: 1.7 }}>
+            Peer-reviewed papers, archaeometallurgical analyses of sacred brassware, mural pigment chemistry, pharmacognosy of Hela Wedakama decoctions, palm-leaf manuscript preservation, and sociological studies of living rituals.
           </p>
         </div>
       </div>
 
       <div style={{ paddingBlock: '4rem' }}>
-        <div className="container-site" style={{ maxWidth: '900px' }}>
-          <ResearchClient articles={articlesData as Article[]} />
+        <div className="container-site" style={{ maxWidth: '960px' }}>
+          <Suspense fallback={<p style={{ textAlign: 'center', padding: '3rem', color: 'var(--color-secondary)' }}>Loading publications...</p>}>
+            <ResearchClient articles={articlesData as Article[]} />
+          </Suspense>
         </div>
       </div>
     </>

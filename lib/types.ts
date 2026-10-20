@@ -1,13 +1,46 @@
 // lib/types.ts — Shared TypeScript types for Intangible Heritage
 
+export type HeritageCategory =
+  | 'Art'
+  | 'Crafts'
+  | 'Brassware'
+  | 'Masks'
+  | 'Ayurveda'
+  | 'Heritage Landscapes'
+  | 'Perahera & Festivals';
+
+export const HERITAGE_CATEGORIES: HeritageCategory[] = [
+  'Art',
+  'Crafts',
+  'Brassware',
+  'Masks',
+  'Ayurveda',
+  'Heritage Landscapes',
+  'Perahera & Festivals',
+];
+
+export interface HeritageCategoryItem {
+  id: string;
+  slug: string;
+  name: string;
+  shortDescription: string;
+  description: string;
+  image: string;
+  icon?: string;
+  focusAreas?: string[];
+}
+
 export interface MuseumItem {
   id: string;
   title: string;
   description: string;
-  category: 'Dance' | 'Crafts' | 'Rituals' | 'Music' | 'Festivals';
+  category: string;
+  heritageCategory?: HeritageCategory | string;
   image: string;
   photographer?: string;
   year?: number;
+  period?: string;
+  provenance?: string;
 }
 
 export interface Event {
@@ -20,6 +53,7 @@ export interface Event {
   image: string;
   status: 'upcoming' | 'past';
   category: string;
+  heritageCategory?: HeritageCategory | string;
 }
 
 export interface Product {
@@ -29,6 +63,7 @@ export interface Product {
   price: number;     // LKR
   image: string;
   category: string;
+  heritageCategory?: HeritageCategory | string;
   inStock: boolean;
 }
 
@@ -45,6 +80,7 @@ export interface Article {
   date: string;
   abstract: string;
   tags: string[];
+  heritageCategory?: HeritageCategory | string;
   downloadUrl?: string;
   journal?: string;
   volume?: string;

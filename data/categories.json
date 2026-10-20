@@ -1,0 +1,72 @@
+[
+  {
+    "id": "art",
+    "slug": "art",
+    "name": "Art",
+    "shortDescription": "Traditional Sri Lankan paintings, rock murals, classical temple frescoes, and ancient sculptures.",
+    "description": "From the world-renowned 5th-century frescoes of Sigiriya and the vibrant ceiling murals of Dambulla to Kandyan-era folk painting traditions, Sri Lankan visual art embodies profound Buddhist philosophy, royal patronage, and natural earth-pigment craftsmanship.",
+    "image": "/images/traditional-art.jpg",
+    "icon": "🎨",
+    "focusAreas": ["Temple Murals & Frescoes", "Classical Sculptures", "Kandyan Folk Art", "Mineral Pigment Painting"]
+  },
+  {
+    "id": "crafts",
+    "slug": "crafts",
+    "name": "Crafts",
+    "shortDescription": "Traditional handicrafts, wood carving, pottery, batik textile arts, and handloom reed weaving.",
+    "description": "Sri Lanka's living crafts reflect centuries of hereditary mastery — including Dumbara reed mat weaving, Kelaniya terracotta pottery, elaborate wood carvings at Embekke, and vibrant batik textiles that translate tropical island flora and folklore into wearable heritage.",
+    "image": "/images/batik-craft.jpg",
+    "icon": "🧵",
+    "focusAreas": ["Dumbara Mat Weaving", "Batik Textiles", "Wood Carving", "Traditional Pottery"]
+  },
+  {
+    "id": "brassware",
+    "slug": "brassware",
+    "name": "Brassware",
+    "shortDescription": "Traditional brass lamps, ceremonial vessels, betel nut cutters, and brass craftsmanship.",
+    "description": "Rooted in historical metallurgical centers such as Pilimathalawa in Kandy, Sri Lankan brass casting produces iconic ceremonial oil lamps (Pahana), ornate offering trays (Serakkale), Betel accessories, and sacred oil dispensers crafted through lost-wax and hand-chasing methods.",
+    "image": "/images/brassware-craft.jpg",
+    "icon": "🪔",
+    "focusAreas": ["Kandyan Brass Lamps (Pahana)", "Ceremonial Vessels", "Lost-Wax Metallurgy", "Hand-Chased Brassware"]
+  },
+  {
+    "id": "masks",
+    "slug": "masks",
+    "name": "Masks",
+    "shortDescription": "Ambalangoda masks, Raksha masks, Kolam folk theatre masks, and traditional mask carving.",
+    "description": "Carved from light, durable Kaduru wood (Nux vomica) and painted with organic pigments, Sri Lanka's traditional masks encompass dramatic Kolam performance masks, demon-warding Raksha masks (Gurulu, Naga, Mayura), and the 18 healing masks of the Sanni Yakuma ritual.",
+    "image": "/images/mask-carving.jpg",
+    "icon": "🎭",
+    "focusAreas": ["Ambalangoda Folk Masks", "Raksha (Guardian) Masks", "Kolam Drama Masks", "Sanni Healing Masks"]
+  },
+  {
+    "id": "ayurveda",
+    "slug": "ayurveda",
+    "name": "Ayurveda",
+    "shortDescription": "Hela Wedakama, indigenous medicine, herbal remedies, sacred Thel Thulāva vessels, and healing texts.",
+    "description": "Sri Lanka's indigenous healing science, Hela Wedakama, integrates 2,500 years of unbroken medical lineages, royal hospital architecture at Mihintale, sacred Thel Thulāva brass pourers, cured palm-leaf medical manuscripts (Puskola Poth), and restorative medicated oils.",
+    "image": "/images/hela-wedakama.jpg",
+    "icon": "🌿",
+    "focusAreas": ["Hela Wedakama", "Thel Thulāva Vessels", "Puskola Poth Manuscripts", "Thel Sindima (Medicated Oils)"]
+  },
+  {
+    "id": "heritage-landscapes",
+    "slug": "heritage-landscapes",
+    "name": "Heritage Landscapes",
+    "shortDescription": "Historical cultural landscapes, sacred forest sanctuaries, ancient water gardens, and living topography.",
+    "description": "Sri Lanka's cultural landscapes integrate ancient hydraulic engineering, sacred groves, and monastic forest retreats. From the water gardens of Sigiriya and monastic ruins of Ritigala to terraced paddy cascades in the central highlands, nature and sacred tradition coexist in harmony.",
+    "image": "/images/heritage-landscapes.jpg",
+    "icon": "🏞️",
+    "focusAreas": ["Sigiriya Water Gardens", "Ritigala Forest Sanctuaries", "Ancient Cascade Tanks (Wewa)", "Sacred Temple Environs"]
+  },
+  {
+    "id": "perahera-festivals",
+    "slug": "perahera-festivals",
+    "name": "Perahera & Festivals",
+    "shortDescription": "Kandy Esala Perahera, traditional processions, ritual drumming, Vesak celebrations, and folk festivals.",
+    "description": "The grand cultural processions of Sri Lanka, most famously the Kandy Esala Perahera, bring sacred rituals to life with hereditary drummers, whip-crackers, fire dancers, adorned elephants, and Ves dancers in homage to the Sacred Tooth Relic and guardian deities.",
+    "image": "/images/perahera-festival.jpg",
+    "icon": "🥁",
+    "focusAreas": ["Kandy Esala Perahera", "Ves & Folk Drumming", "Vesak Festival Lights", "Temple Ritual Processions"]
+  }
+]
