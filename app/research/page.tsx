@@ -7,6 +7,7 @@ import { Suspense } from 'react';
 import articlesData from '@/data/articles.json';
 import type { Article } from '@/lib/types';
 import ResearchClient from './ResearchClient';
+import SectionBackground from '@/components/decorations/SectionBackground';
 
 export const metadata: Metadata = {
   title: 'Research & Scholarly Publications — Sri Lankan Intangible Cultural Heritage',
@@ -18,11 +19,17 @@ export default function ResearchPage() {
   return (
     <>
       {/* Page header */}
-      <div style={{
-        background: 'linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%)',
-        paddingBlock: '4rem 3rem', textAlign: 'center', color: '#fff',
-      }}>
-        <div className="container-site">
+      <div
+        className="heritage-section-relative"
+        style={{
+          background: 'linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%)',
+          paddingBlock: '4rem 3rem',
+          textAlign: 'center',
+          color: '#fff',
+        }}
+      >
+        <SectionBackground theme="dark" leftDecor="palm-leaf" rightDecor="stupa-monument" opacity={0.25} />
+        <div className="container-site heritage-section-content">
           <BookOpen size={40} style={{ color: 'var(--color-accent)', marginBottom: '0.75rem' }} />
           <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(2rem, 5vw, 3rem)',
             fontWeight: 800, marginBottom: '1rem', lineHeight: 1.15 }}>
@@ -34,8 +41,17 @@ export default function ResearchPage() {
         </div>
       </div>
 
-      <div style={{ paddingBlock: '4rem' }}>
-        <div className="container-site" style={{ maxWidth: '960px' }}>
+      <div className="heritage-section-relative" style={{ paddingBlock: '4.5rem', background: '#FAF6F0' }}>
+        <SectionBackground
+          theme="cream"
+          leftDecor="palm-leaf"
+          rightDecor="bo-leaf"
+          opacity={0.18}
+          leftSize={480}
+          rightSize={440}
+          calligraphyText="Scholarly Living Archives"
+        />
+        <div className="container-site heritage-section-content" style={{ maxWidth: '960px' }}>
           <Suspense fallback={<p style={{ textAlign: 'center', padding: '3rem', color: 'var(--color-secondary)' }}>Loading publications...</p>}>
             <ResearchClient articles={articlesData as Article[]} />
           </Suspense>

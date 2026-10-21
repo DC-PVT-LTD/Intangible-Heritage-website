@@ -6,6 +6,7 @@ import { Suspense } from 'react';
 import museumData from '@/data/museum.json';
 import type { MuseumItem } from '@/lib/types';
 import MuseumClient from './MuseumClient';
+import SectionBackground from '@/components/decorations/SectionBackground';
 
 export const metadata: Metadata = {
   title: 'Museum — Sacred Implements, Art, Crafts & Cultural Artifacts',
@@ -17,13 +18,18 @@ export default function MuseumPage() {
   return (
     <>
       {/* Page header */}
-      <div style={{
-        background: 'linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%)',
-        paddingBlock: '4rem 3rem',
-        textAlign: 'center',
-        color: '#fff',
-      }}>
-        <div className="container-site">
+      <div
+        className="heritage-section-relative"
+        style={{
+          background: 'linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%)',
+          paddingBlock: '4rem 3rem',
+          textAlign: 'center',
+          color: '#fff',
+        }}
+      >
+        <SectionBackground theme="dark" leftDecor="landscapes" rightDecor="pattirippuwa" opacity={0.25} />
+
+        <div className="container-site heritage-section-content">
           <p style={{ color: 'var(--color-accent)', fontWeight: 600, fontSize: '0.85rem',
             letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
             Virtual Museum & Archives
@@ -38,7 +44,7 @@ export default function MuseumPage() {
         </div>
       </div>
 
-      <div style={{ paddingBlock: '3rem' }}>
+      <div className="heritage-section-relative" style={{ paddingBlock: '3.5rem', background: '#FAF6F0' }}>
         <div className="container-site">
           <Suspense fallback={<p style={{ textAlign: 'center', padding: '3rem', color: 'var(--color-secondary)' }}>Loading gallery...</p>}>
             <MuseumClient initialItems={museumData as MuseumItem[]} />
