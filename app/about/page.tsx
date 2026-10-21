@@ -5,6 +5,8 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { Heart, Eye, Target, Sparkles, Award, BookOpen, ShieldCheck } from 'lucide-react';
+import SectionBackground from '@/components/decorations/SectionBackground';
+
 
 export const metadata: Metadata = {
   title: 'About Us — Preserving Sri Lankan Intangible Cultural Heritage',
@@ -33,13 +35,17 @@ export default function AboutPage() {
   return (
     <>
       {/* ── Page Header ────────────────────────────────────────── */}
-      <div style={{
-        background: 'linear-gradient(135deg, var(--color-primary) 0%, #3d2110 100%)',
-        paddingBlock: '4.5rem 3.5rem',
-        textAlign: 'center',
-        color: '#fff',
-      }}>
-        <div className="container-site">
+      <div
+        className="heritage-section-relative"
+        style={{
+          background: 'linear-gradient(135deg, var(--color-primary) 0%, #3d2110 100%)',
+          paddingBlock: '4.5rem 3.5rem',
+          textAlign: 'center',
+          color: '#fff',
+        }}
+      >
+        <SectionBackground theme="dark" leftDecor="map" rightDecor="pattirippuwa" opacity={0.25} />
+        <div className="container-site heritage-section-content">
           <p style={{
             color: 'var(--color-accent)', fontWeight: 700, fontSize: '0.85rem',
             letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '0.5rem',
@@ -62,8 +68,20 @@ export default function AboutPage() {
       </div>
 
       {/* ── Our Story ──────────────────────────────────────────── */}
-      <section aria-label="Our story" style={{ paddingBlock: '5rem', background: '#fff' }}>
-        <div className="container-site">
+      <section
+        aria-label="Our story"
+        className="heritage-section-relative"
+        style={{ paddingBlock: '5rem', background: '#fff' }}
+      >
+        <SectionBackground
+          theme="light"
+          leftDecor="stupa-monument"
+          rightDecor="mandala"
+          opacity={0.20}
+          leftSize={480}
+          rightSize={520}
+        />
+        <div className="container-site heritage-section-content">
           <div style={{
             display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
             gap: '3.5rem', alignItems: 'center',
@@ -113,8 +131,20 @@ export default function AboutPage() {
       </section>
 
       {/* ── Mission & Vision ───────────────────────────────────── */}
-      <section aria-label="Mission and vision" style={{ background: '#FAF6F0', paddingBlock: '5rem' }}>
-        <div className="container-site">
+      <section
+        aria-label="Mission and vision"
+        className="heritage-section-relative"
+        style={{ background: '#FAF6F0', paddingBlock: '5rem' }}
+      >
+        <SectionBackground
+          theme="cream"
+          leftDecor="bo-leaf"
+          rightDecor="punkalasa"
+          opacity={0.18}
+          leftSize={450}
+          rightSize={450}
+        />
+        <div className="container-site heritage-section-content">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
             {[
               {
@@ -160,8 +190,20 @@ export default function AboutPage() {
       </section>
 
       {/* ── Domains of Intangible Heritage (7 Categories) ──────── */}
-      <section aria-label="Domains of cultural heritage" style={{ paddingBlock: '5rem', background: '#fff' }}>
-        <div className="container-site">
+      <section
+        aria-label="Domains of cultural heritage"
+        className="heritage-section-relative"
+        style={{ paddingBlock: '5rem', background: '#fff' }}
+      >
+        <SectionBackground
+          theme="light"
+          leftDecor="crafts"
+          rightDecor="brassware"
+          opacity={0.20}
+          leftSize={460}
+          rightSize={440}
+        />
+        <div className="container-site heritage-section-content">
           <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
             <h2 className="section-title">Seven Domains of Sri Lankan Cultural Heritage</h2>
             <p className="section-subtitle" style={{ maxWidth: '640px', margin: '0.75rem auto 0' }}>
@@ -187,8 +229,20 @@ export default function AboutPage() {
       </section>
 
       {/* ── Leadership & Advisory Council ──────────────────────── */}
-      <section aria-label="Leadership team" style={{ background: '#FAF6F0', paddingBlock: '5rem' }}>
-        <div className="container-site">
+      <section
+        aria-label="Leadership team"
+        className="heritage-section-relative"
+        style={{ background: '#FAF6F0', paddingBlock: '5rem' }}
+      >
+        <SectionBackground
+          theme="cream"
+          leftDecor="palm-leaf"
+          rightDecor="makara-thorana"
+          opacity={0.18}
+          leftSize={480}
+          rightSize={420}
+        />
+        <div className="container-site heritage-section-content">
           <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
             <p style={{
               color: 'var(--color-accent)', fontWeight: 700, fontSize: '0.85rem',

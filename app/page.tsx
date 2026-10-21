@@ -20,10 +20,10 @@ export const metadata: Metadata = {
 };
 
 const STATS = [
-  { value: '2,500+', label: 'Years of Living Heritage', desc: 'Unbroken island cultural lineages' },
-  { value: '7 Domains', label: 'Main Heritage Categories', desc: 'Art, Crafts, Brassware, Masks, Ayurveda & more' },
-  { value: '1,200+', label: 'Documented Traditions & Texts', desc: 'From sacred Puskola Poth to folk rituals' },
-  { value: '350+',   label: 'Conserved Artifacts & Implements', desc: 'Thel Thulāva, brass lamps, masks & tools' },
+  { value: '2,500+', label: 'Years of Heritage', desc: 'Living island cultural lineages' },
+  { value: '7 Domains', label: 'Main Categories', desc: 'Crafts, masks, ayurveda & arts' },
+  { value: '1,200+', label: 'Documented Traditions', desc: 'Sacred texts & living rituals' },
+  { value: '350+',   label: 'Conserved Artifacts', desc: 'Traditional lamps, tools & masks' },
 ];
 
 const CORE_FOCUS_AREAS = [
@@ -36,7 +36,8 @@ const CORE_FOCUS_AREAS = [
   { icon: '🥁', label: 'Perahera & Festivals', desc: 'The historic Kandy Esala Perahera, sacred tooth relic processions, ritual Ves dance, drumming, and folk festivals.' },
 ];
 
-import HeroSlider from '@/components/HeroSlider';
+import CuratedVitrineHero from '@/components/CuratedVitrineHero';
+import SectionBackground from '@/components/decorations/SectionBackground';
 
 export default function HomePage() {
   const categories = categoriesData as HeritageCategoryItem[];
@@ -47,35 +48,29 @@ export default function HomePage() {
 
   return (
     <>
-      {/* ── Hero Banner with Auto-Slide ────────────────────────── */}
-      <HeroSlider />
+      {/* ── Option 2 Model: Curated Vitrine & Light Cream Hero ── */}
+      <CuratedVitrineHero />
 
       {/* ── Key Statistics Bar ──────────────────────────────────── */}
-      <section aria-label="Key statistics" style={{
-        background: 'var(--color-primary)',
-        borderBottom: '2px solid rgba(201,166,107,0.3)',
-        paddingBlock: '2.5rem',
-      }}>
-        <div className="container-site">
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-            gap: '2rem',
-            textAlign: 'center',
-          }}>
+      <section
+        aria-label="Key statistics"
+        className="heritage-section-relative stats-bar-section"
+        style={{
+          background: 'var(--color-primary)',
+          borderBottom: '2px solid rgba(201,166,107,0.3)',
+        }}
+      >
+        <div className="container-site heritage-section-content">
+          <div className="stats-bar-grid">
             {STATS.map(stat => (
-              <div key={stat.label} style={{ color: '#fff' }}>
-                <div style={{
-                  fontFamily: 'var(--font-serif)', fontSize: 'clamp(2rem, 3.5vw, 2.75rem)',
-                  fontWeight: 800, color: 'var(--color-accent)', lineHeight: 1,
-                  marginBottom: '0.4rem',
-                }}>
+              <div key={stat.label} className="stats-bar-item">
+                <div className="stats-bar-val">
                   {stat.value}
                 </div>
-                <div style={{ fontSize: '0.95rem', fontWeight: 700, marginBottom: '0.25rem' }}>
+                <div className="stats-bar-title">
                   {stat.label}
                 </div>
-                <div style={{ fontSize: '0.78rem', color: 'rgba(255,255,255,0.65)' }}>
+                <div className="stats-bar-subtitle">
                   {stat.desc}
                 </div>
               </div>
@@ -85,8 +80,20 @@ export default function HomePage() {
       </section>
 
       {/* ── Seven Main Heritage Categories (Image Cards) ────────── */}
-      <section aria-label="Seven Heritage Categories" style={{ background: '#fff', paddingBlock: '5rem' }}>
-        <div className="container-site">
+      <section
+        aria-label="Seven Heritage Categories"
+        className="heritage-section-relative"
+        style={{ background: '#fff', paddingBlock: '5rem' }}
+      >
+        <SectionBackground
+          theme="light"
+          leftDecor="mandala"
+          rightDecor="pattirippuwa"
+          opacity={0.20}
+          leftSize={560}
+          rightSize={440}
+        />
+        <div className="container-site heritage-section-content">
           <div style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto 3rem' }}>
             <p style={{
               color: 'var(--color-accent)', fontWeight: 700, fontSize: '0.85rem',
@@ -170,8 +177,19 @@ export default function HomePage() {
       </section>
 
       {/* ── Core Focus Areas (7 Heritage Pillars) ───────────────── */}
-      <section aria-label="Core Focus Areas" style={{ background: '#FAF6F0', paddingBlock: '4.5rem' }}>
-        <div className="container-site">
+      <section
+        aria-label="Core Focus Areas"
+        className="heritage-section-relative"
+        style={{ background: '#FAF6F0', paddingBlock: '4.5rem' }}
+      >
+        <SectionBackground
+          theme="cream"
+          leftDecor="makara-thorana"
+          rightDecor="none"
+          opacity={0.18}
+          leftSize={460}
+        />
+        <div className="container-site heritage-section-content">
           <div style={{ textAlign: 'center', maxWidth: '640px', margin: '0 auto 3rem' }}>
             <p style={{
               color: 'var(--color-accent)', fontWeight: 700, fontSize: '0.85rem',
@@ -215,8 +233,20 @@ export default function HomePage() {
       </section>
 
       {/* ── About Narrative: Preserving Living Wisdom ────────────── */}
-      <section aria-label="About Intangible Heritage" style={{ paddingBlock: '5rem', background: '#fff' }}>
-        <div className="container-site">
+      <section
+        aria-label="About Intangible Heritage"
+        className="heritage-section-relative"
+        style={{ paddingBlock: '5rem', background: '#fff' }}
+      >
+        <SectionBackground
+          theme="light"
+          leftDecor="bo-leaf"
+          rightDecor="crafts"
+          opacity={0.20}
+          leftSize={480}
+          rightSize={460}
+        />
+        <div className="container-site heritage-section-content">
           <div style={{
             display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
             gap: '3.5rem', alignItems: 'center',
@@ -274,8 +304,20 @@ export default function HomePage() {
       </section>
 
       {/* ── Featured Museum Exhibits (Across Categories) ────────── */}
-      <section aria-label="Featured museum items" style={{ paddingBlock: '5rem', background: '#FAF6F0' }}>
-        <div className="container-site">
+      <section
+        aria-label="Featured museum items"
+        className="heritage-section-relative"
+        style={{ paddingBlock: '5rem', background: '#FAF6F0' }}
+      >
+        <SectionBackground
+          theme="cream"
+          leftDecor="brassware"
+          rightDecor="masks"
+          opacity={0.18}
+          leftSize={450}
+          rightSize={450}
+        />
+        <div className="container-site heritage-section-content">
           <div style={{
             display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end',
             flexWrap: 'wrap', gap: '1rem', marginBottom: '2.5rem',
@@ -336,8 +378,21 @@ export default function HomePage() {
       </section>
 
       {/* ── Upcoming Events & Workshops (Across Categories) ─────── */}
-      <section aria-label="Upcoming events" style={{ paddingBlock: '5rem', background: '#fff' }}>
-        <div className="container-site">
+      <section
+        aria-label="Upcoming events"
+        className="heritage-section-relative"
+        style={{ paddingBlock: '5rem', background: '#fff' }}
+      >
+        <SectionBackground
+          theme="light"
+          leftDecor="drums"
+          rightDecor="perahera"
+          calligraphyText="Living Pageantry & Sacred Rites"
+          opacity={0.20}
+          leftSize={460}
+          rightSize={440}
+        />
+        <div className="container-site heritage-section-content">
           <div style={{
             display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end',
             flexWrap: 'wrap', gap: '1rem', marginBottom: '2.5rem',
@@ -405,8 +460,19 @@ export default function HomePage() {
       </section>
 
       {/* ── Latest Research & Scholarly Papers ──────────────────── */}
-      <section aria-label="Latest research articles" style={{ paddingBlock: '5rem', background: '#FAF6F0' }}>
-        <div className="container-site">
+      <section
+        aria-label="Latest research articles"
+        className="heritage-section-relative"
+        style={{ paddingBlock: '5rem', background: '#FAF6F0' }}
+      >
+        <SectionBackground
+          theme="cream"
+          leftDecor="palm-leaf"
+          rightDecor="none"
+          opacity={0.18}
+          leftSize={500}
+        />
+        <div className="container-site heritage-section-content">
           <div style={{
             display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end',
             flexWrap: 'wrap', gap: '1rem', marginBottom: '2.5rem',
@@ -472,14 +538,26 @@ export default function HomePage() {
       </section>
 
       {/* ── CTA Banner ─────────────────────────────────────────── */}
-      <section aria-label="Support Sri Lankan Heritage" style={{
-        position: 'relative',
-        background: 'linear-gradient(135deg, var(--color-primary) 0%, #3a1e0c 100%)',
-        paddingBlock: '4.5rem',
-        textAlign: 'center',
-        color: '#fff',
-      }}>
-        <div className="container-site">
+      <section
+        aria-label="Support Sri Lankan Heritage"
+        className="heritage-section-relative"
+        style={{
+          position: 'relative',
+          background: 'linear-gradient(135deg, var(--color-primary) 0%, #3a1e0c 100%)',
+          paddingBlock: '4.5rem',
+          textAlign: 'center',
+          color: '#fff',
+        }}
+      >
+        <SectionBackground
+          theme="dark"
+          leftDecor="punkalasa"
+          rightDecor="stupa-monument"
+          opacity={0.25}
+          leftSize={460}
+          rightSize={420}
+        />
+        <div className="container-site heritage-section-content">
           <span style={{ fontSize: '2.5rem', display: 'block', marginBottom: '1rem' }}>🏛️</span>
           <h2 style={{
             fontFamily: 'var(--font-serif)', fontSize: 'clamp(1.75rem, 4vw, 2.4rem)',
@@ -493,7 +571,7 @@ export default function HomePage() {
           }}>
             Support traditional master artisans, acquire certified handcrafted brassware, decorative masks, and herbal oils, or partner with us in the scholarly digital preservation of ancient manuscripts and sacred monuments.
           </p>
-          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }} className="home-cta-button-group">
             <Link href="/shop" className="btn-accent" id="home-shop-cta">
               Visit Cultural Marketplace
             </Link>
@@ -504,6 +582,98 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <style>{`
+        .stats-bar-section {
+          padding-block: 2.25rem;
+        }
+        .stats-bar-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 2rem;
+          text-align: center;
+        }
+        .stats-bar-item {
+          color: #fff;
+        }
+        .stats-bar-val {
+          font-family: var(--font-serif);
+          font-size: clamp(1.8rem, 3.2vw, 2.75rem);
+          font-weight: 800;
+          color: var(--color-accent);
+          line-height: 1;
+          margin-bottom: 0.35rem;
+        }
+        .stats-bar-title {
+          font-size: 0.95rem;
+          font-weight: 700;
+          margin-bottom: 0.25rem;
+          color: #ffffff;
+        }
+        .stats-bar-subtitle {
+          font-size: 0.78rem;
+          color: rgba(255, 255, 255, 0.65);
+          line-height: 1.4;
+        }
+
+        @media (max-width: 900px) {
+          .stats-bar-section {
+            padding-block: 1.5rem !important;
+          }
+          .stats-bar-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 1.25rem 0.75rem !important;
+          }
+          .stats-bar-val {
+            font-size: 1.65rem !important;
+            margin-bottom: 0.2rem !important;
+          }
+          .stats-bar-title {
+            font-size: 0.82rem !important;
+            line-height: 1.25 !important;
+            margin-bottom: 0.15rem !important;
+          }
+          .stats-bar-subtitle {
+            font-size: 0.68rem !important;
+            line-height: 1.25 !important;
+            opacity: 0.75 !important;
+          }
+          .stats-bar-section .heritage-decor-wrapper {
+            opacity: 0.08 !important;
+          }
+          .home-cta-button-group {
+            flex-direction: column !important;
+            align-items: center !important;
+          }
+          .home-cta-button-group a {
+            width: 100% !important;
+            max-width: 320px !important;
+            text-align: center !important;
+            justify-content: center !important;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .stats-bar-section {
+            padding-block: 1.2rem !important;
+          }
+          .stats-bar-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 0.95rem 0.5rem !important;
+          }
+          .stats-bar-val {
+            font-size: 1.45rem !important;
+          }
+          .stats-bar-title {
+            font-size: 0.76rem !important;
+          }
+          .stats-bar-subtitle {
+            font-size: 0.65rem !important;
+          }
+        }
+      `}</style>
     </>
   );
 }
+
+
