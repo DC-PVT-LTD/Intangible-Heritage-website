@@ -63,18 +63,37 @@ body {
   padding-inline: 1.25rem;
 }
 
-/* ── Section titles ── */
+/* ── Section titles with one-time entrance animation ── */
+@keyframes headingOneTimeEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .section-title {
   font-family: var(--font-serif);
   font-size: clamp(1.6rem, 4vw, 2.5rem);
   font-weight: 700;
   color: var(--color-primary);
   line-height: 1.2;
+  animation: headingOneTimeEntrance 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-iteration-count: 1; /* Strictly one time */
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), text-shadow 0.3s ease;
+}
+.section-title:hover {
+  text-shadow: 0 4px 16px rgba(92, 58, 33, 0.12);
 }
 .section-subtitle {
   font-size: 1rem;
   color: var(--color-secondary);
   margin-top: 0.5rem;
+  animation: headingOneTimeEntrance 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+  animation-iteration-count: 1; /* Strictly one time */
 }
 
 /* ── Cards ── */
@@ -281,3 +300,154 @@ body {
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+
+/* ── Mobile bottom dock spacing ── */
+@media (max-width: 900px) {
+  #main-content {
+    padding-bottom: 6rem;
+  }
+}
+
+/* ===================================================
+   HERITAGE DECORATIVE SECTION BACKGROUNDS
+   Silky smooth keyframes & responsive background styles
+   =================================================== */
+
+@keyframes mandalaDrift {
+  0%, 100% {
+    transform: translateY(-50%) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translateY(-51.5%) rotate(1.2deg) scale(1.02);
+  }
+}
+
+@keyframes mapFloat {
+  0%, 100% {
+    transform: translateY(-50%) translateX(0);
+  }
+  50% {
+    transform: translateY(-51.2%) translateX(6px);
+  }
+}
+
+@keyframes archFloat {
+  0%, 100% {
+    transform: translateY(-50%) scale(1);
+  }
+  50% {
+    transform: translateY(-49.2%) scale(1.015);
+  }
+}
+
+.animate-mandala-drift {
+  animation: mandalaDrift 28s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-map-float {
+  animation: mapFloat 24s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-arch-float {
+  animation: archFloat 26s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Ensure section content stays crisply above decorative background layers */
+.heritage-section-relative {
+  position: relative;
+  overflow: hidden;
+}
+
+.heritage-section-content {
+  position: relative;
+  z-index: 10;
+}
+
+/* Decorative container responsive adjustments */
+@media (max-width: 1024px) {
+  .heritage-mandala-container svg {
+    width: 440px !important;
+    height: 440px !important;
+  }
+  .heritage-map-container svg {
+    width: 380px !important;
+    height: auto !important;
+  }
+  .heritage-arch-container svg {
+    width: 360px !important;
+    height: auto !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .heritage-mandala-container {
+    opacity: 0.14 !important;
+    left: -120px !important;
+  }
+  .heritage-map-container {
+    opacity: 0.16 !important;
+    left: -60px !important;
+  }
+  .heritage-arch-container {
+    opacity: 0.14 !important;
+  }
+  .heritage-arch-container[style*="right"] {
+    right: -40px !important;
+  }
+  .heritage-arch-container[style*="left"] {
+    left: -40px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .heritage-mandala-container {
+    opacity: 0.10 !important;
+    left: -140px !important;
+  }
+  .heritage-map-container {
+    opacity: 0.12 !important;
+  }
+  .heritage-arch-container {
+    opacity: 0.10 !important;
+  }
+}
+
+/* ── Authentic Heritage Vector Layer ── */
+.heritage-vector-layer {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.4s ease;
+}
+
+@media (max-width: 1024px) {
+  .heritage-vector-layer > div {
+    transform: scale(0.85);
+    transform-origin: center center;
+  }
+}
+
+@media (max-width: 768px) {
+  .heritage-vector-layer {
+    opacity: 0.20 !important;
+  }
+  .heritage-vector-layer > div {
+    transform: scale(0.72);
+    transform-origin: center center;
+  }
+  .heritage-decor-wrapper {
+    opacity: 0.10 !important;
+  }
+}
+
+/* Ensure mobile dock doesn't cover footer content */
+@media (max-width: 900px) {
+  footer {
+    padding-bottom: 5.5rem !important;
+  }
+}
+
+

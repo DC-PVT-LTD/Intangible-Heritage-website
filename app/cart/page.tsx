@@ -8,21 +8,25 @@ import Link from 'next/link';
 import { Trash2, Plus, Minus, ShoppingBag, MessageCircle } from 'lucide-react';
 import { useCart } from '@/components/CartContext';
 import { formatLKR, buildWhatsAppUrl } from '@/lib/utils';
+import SectionBackground from '@/components/decorations/SectionBackground';
 
 export default function CartPage() {
   const { items, totalPrice, totalItems, removeFromCart, incrementItem, decrementItem, clearCart } = useCart();
 
   if (items.length === 0) {
     return (
-      <div style={{ paddingBlock: '8rem', textAlign: 'center' }}>
-        <ShoppingBag size={60} style={{ color: 'var(--color-accent)', marginBottom: '1.5rem' }} />
-        <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: '2rem', color: 'var(--color-primary)', marginBottom: '0.75rem' }}>
-          Your cart is empty
-        </h1>
-        <p style={{ color: 'var(--color-secondary)', marginBottom: '2rem' }}>
-          Browse our shop and add some heritage items.
-        </p>
-        <Link href="/shop" className="btn-primary" id="cart-empty-shop-link">Browse Shop</Link>
+      <div className="heritage-section-relative" style={{ paddingBlock: '8rem', textAlign: 'center', background: '#FAF6F0' }}>
+        <SectionBackground theme="cream" leftDecor="punkalasa" rightDecor="crafts" opacity={0.18} />
+        <div className="container-site heritage-section-content">
+          <ShoppingBag size={60} style={{ color: 'var(--color-accent)', marginBottom: '1.5rem' }} />
+          <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: '2rem', color: 'var(--color-primary)', marginBottom: '0.75rem' }}>
+            Your cart is empty
+          </h1>
+          <p style={{ color: 'var(--color-secondary)', marginBottom: '2rem' }}>
+            Browse our shop and add some heritage items.
+          </p>
+          <Link href="/shop" className="btn-primary" id="cart-empty-shop-link">Browse Shop</Link>
+        </div>
       </div>
     );
   }
@@ -34,11 +38,17 @@ export default function CartPage() {
 
   return (
     <>
-      <div style={{
-        background: 'linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%)',
-        paddingBlock: '3rem 2.5rem', color: '#fff', textAlign: 'center',
-      }}>
-        <div className="container-site">
+      <div
+        className="heritage-section-relative"
+        style={{
+          background: 'linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%)',
+          paddingBlock: '3rem 2.5rem',
+          color: '#fff',
+          textAlign: 'center',
+        }}
+      >
+        <SectionBackground theme="dark" leftDecor="brassware" rightDecor="crafts" opacity={0.25} />
+        <div className="container-site heritage-section-content">
           <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(1.8rem, 4vw, 2.5rem)',
             fontWeight: 800, marginBottom: '0.5rem' }}>
             Shopping Cart
@@ -47,8 +57,10 @@ export default function CartPage() {
         </div>
       </div>
 
-      <div style={{ paddingBlock: '3rem' }}>
-        <div className="container-site">
+      <div className="heritage-section-relative" style={{ paddingBlock: '3.5rem', background: '#FAF6F0' }}>
+        <SectionBackground theme="cream" leftDecor="crafts" rightDecor="brassware" opacity={0.18} />
+        <div className="container-site heritage-section-content">
+
           <div style={{ display: 'grid', gridTemplateColumns: '1fr min(340px, 100%)', gap: '2rem',
             alignItems: 'start' }}>
 

@@ -7,6 +7,9 @@ import { CalendarDays, MapPin, Tag } from 'lucide-react';
 import eventsData from '@/data/events.json';
 import type { Event } from '@/lib/types';
 import { formatDate } from '@/lib/utils';
+import SectionBackground from '@/components/decorations/SectionBackground';
+
+
 
 export const metadata: Metadata = {
   title: 'Events & Exhibitions — Cultural Workshops, Symposia & Masterclasses',
@@ -77,11 +80,17 @@ export default function EventsPage() {
   return (
     <>
       {/* Page header */}
-      <div style={{
-        background: 'linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%)',
-        paddingBlock: '4rem 3rem', textAlign: 'center', color: '#fff',
-      }}>
-        <div className="container-site">
+      <div
+        className="heritage-section-relative"
+        style={{
+          background: 'linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%)',
+          paddingBlock: '4rem 3rem',
+          textAlign: 'center',
+          color: '#fff',
+        }}
+      >
+        <SectionBackground theme="dark" leftDecor="drums" rightDecor="perahera" opacity={0.25} />
+        <div className="container-site heritage-section-content">
           <p style={{ color: 'var(--color-accent)', fontWeight: 600, fontSize: '0.85rem',
             letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
             Events & Exhibitions
@@ -96,8 +105,15 @@ export default function EventsPage() {
         </div>
       </div>
 
-      <div style={{ paddingBlock: '4rem' }}>
-        <div className="container-site">
+      <div className="heritage-section-relative" style={{ paddingBlock: '4rem', background: '#FAF6F0' }}>
+        <SectionBackground
+          theme="cream"
+          leftDecor="perahera"
+          rightDecor="makara-thorana"
+          opacity={0.18}
+          calligraphyText="Living Pageantry & Sacred Rites"
+        />
+        <div className="container-site heritage-section-content">
 
           {/* ── Upcoming ───────────────────────────────── */}
           <section aria-label="Upcoming events" style={{ marginBottom: '4rem' }}>
