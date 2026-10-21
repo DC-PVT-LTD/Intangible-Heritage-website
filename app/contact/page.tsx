@@ -4,8 +4,10 @@
  */
 import { useState } from 'react';
 import { MapPin, Phone, Mail, Clock, Send, ExternalLink } from 'lucide-react';
+import SectionBackground from '@/components/decorations/SectionBackground';
 
 /* Custom social SVG icons */
+
 const FacebookIcon = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
     <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
@@ -53,11 +55,17 @@ export default function ContactPage() {
   return (
     <>
       {/* Page header */}
-      <div style={{
-        background: 'linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%)',
-        paddingBlock: '4rem 3rem', textAlign: 'center', color: '#fff',
-      }}>
-        <div className="container-site">
+      <div
+        className="heritage-section-relative"
+        style={{
+          background: 'linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%)',
+          paddingBlock: '4rem 3rem',
+          textAlign: 'center',
+          color: '#fff',
+        }}
+      >
+        <SectionBackground theme="dark" leftDecor="punkalasa" rightDecor="pattirippuwa" opacity={0.25} />
+        <div className="container-site heritage-section-content">
           <p style={{ color: 'var(--color-accent)', fontWeight: 600, fontSize: '0.85rem',
             letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
             Get in Touch
@@ -72,8 +80,17 @@ export default function ContactPage() {
         </div>
       </div>
 
-      <div style={{ paddingBlock: '4rem' }}>
-        <div className="container-site">
+      <div className="heritage-section-relative" style={{ paddingBlock: '4.5rem', background: '#FAF6F0' }}>
+        <SectionBackground
+          theme="cream"
+          leftDecor="punkalasa"
+          rightDecor="bo-leaf"
+          opacity={0.18}
+          leftSize={480}
+          rightSize={440}
+          calligraphyText="Preserving Living Wisdom"
+        />
+        <div className="container-site heritage-section-content">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
             gap: '3rem', alignItems: 'start' }}>
 

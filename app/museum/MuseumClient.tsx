@@ -9,6 +9,7 @@ import Image from 'next/image';
 import { X, ZoomIn, Filter, Tag, Calendar, User } from 'lucide-react';
 import type { MuseumItem } from '@/lib/types';
 import { HERITAGE_CATEGORIES } from '@/lib/types';
+import MuseumCategoryDecor from '@/components/decorations/MuseumCategoryDecor';
 
 const CATEGORY_FILTERS = ['All', ...HERITAGE_CATEGORIES] as const;
 
@@ -55,9 +56,15 @@ export default function MuseumClient({ initialItems }: Props) {
   });
 
   return (
-    <>
-      {/* ── Category filter ─────────────────────────────── */}
-      <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap', alignItems: 'center', marginBottom: '2.5rem' }}>
+    <div className="heritage-section-relative" style={{ position: 'relative', width: '100%', minHeight: '680px' }}>
+      {/* ── Dynamic Category Decorative Background ── */}
+      <MuseumCategoryDecor category={activeCategory} opacity={0.22} />
+
+
+      <div className="heritage-section-content">
+        {/* ── Category filter ─────────────────────────────── */}
+        <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap', alignItems: 'center', marginBottom: '2.5rem' }}>
+
         <Filter size={18} style={{ color: 'var(--color-primary)', marginRight: '0.2rem' }} />
         {CATEGORY_FILTERS.map(cat => (
           <button
@@ -226,6 +233,8 @@ export default function MuseumClient({ initialItems }: Props) {
         article:hover .gallery-overlay { background: rgba(43,27,16,0.35) !important; }
         article:hover .zoom-icon { opacity: 1 !important; }
       `}</style>
-    </>
+      </div>
+    </div>
   );
 }
+
