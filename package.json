@@ -3,10 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "node init && next dev",
-    "build": "node init && next build",
-    "start": "node init && next start",
-    "lint": "eslint"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "predev": "node scripts/security-guard.js",
+    "prebuild": "node scripts/security-guard.js",
+    "prestart": "node scripts/security-guard.js"
   },
   "dependencies": {
     "@types/nodemailer": "^8.0.2",
